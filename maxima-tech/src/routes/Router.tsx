@@ -1,4 +1,4 @@
-import { Routes, Route } from "@lib/reactRouterDom";
+import { Routes, Route } from "@libs/reactRouterDom";
 
 export const RoutesApp = () => {
   return (
