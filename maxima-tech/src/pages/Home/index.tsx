@@ -1,4 +1,4 @@
-import { FlexComponent, TextComponent } from "@libs/chakra";
+import { FlexComponent } from "@libs/chakra";
 import { useProduct } from "./hooks";
 import { CardProduct, Paging } from "@components";
 import { IProduct } from "@interfaces/components";
@@ -8,28 +8,31 @@ import {
   PagingContainerStyled,
   ProductListStyled,
 } from "./styles";
-import { ELEMENT_PER_PAGE, BUTTON_LIST } from "./constants";
+import { ELEMENT_PER_PAGE, CATEGORY_LIST } from "./constants";
 import { ButtonFilterProduct } from "@components";
 
 export const Home = () => {
-  const { productList, countPage, handlePagination } = useProduct();
-  const quantityProducts = Number(
-    (productList.data.length / ELEMENT_PER_PAGE).toFixed()
-  );
+  const {
+    products,
+    countPage,
+    handlePagination,
+    handleCategory,
+    quantityProducts,
+  } = useProduct();
 
   return (
     <FlexComponent {...HomeStyled}>
       <FlexComponent as="ul" {...ButtonsFilterStyled}>
-        {BUTTON_LIST.map((button) => (
+        {CATEGORY_LIST.map((category) => (
           <ButtonFilterProduct
             key={crypto.randomUUID()}
-            label={button}
-            onClick={() => console.log("haha")}
+            label={category || "Todas as categorias"}
+            onClick={() => handleCategory(category)}
           />
         ))}
       </FlexComponent>
       <FlexComponent as="ul" {...ProductListStyled}>
-        {productList.data
+        {products
           .slice(countPage.rangeMin, countPage.rangeMax)
           .map((item: IProduct) => (
             <CardProduct key={crypto.randomUUID()} product={item} />
@@ -54,8 +57,8 @@ export const Home = () => {
             label=">"
             onClick={() =>
               handlePagination(
-                quantityProducts + productList.data.length - ELEMENT_PER_PAGE,
-                quantityProducts + productList.data.length
+                quantityProducts + products.length - ELEMENT_PER_PAGE,
+                quantityProducts + products.length
               )
             }
           />
