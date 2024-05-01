@@ -10,6 +10,7 @@ import {
   TypographyProps,
   PositionProps,
   ThemingProps,
+  EffectProps,
 } from "@chakra-ui/react";
 
 export interface StyleComponents
@@ -24,6 +25,7 @@ export interface StyleComponents
     InteractivityProps,
     PositionProps,
     ThemingProps,
+    EffectProps,
     ColorProps {}
 
 export interface IIconComponent {

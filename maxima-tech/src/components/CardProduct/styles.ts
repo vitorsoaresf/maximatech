@@ -3,6 +3,7 @@ import { theme } from "@styles";
 
 export const CardStyled: StyleComponents = {
   width: ["300px", "413.46px"],
+  cursor: "pointer",
 };
 
 export const ImageStyled: StyleComponents = {
@@ -42,4 +43,14 @@ export const DiscountPercentageCardStyled: StyleComponents = {
   color: "white",
   fontWeight: theme.typography.fontWeights.medium,
   fontFamily: theme.typography.fonts.montserrat,
+};
+
+export const FadeInBoxStyled: StyleComponents = {
+  opacity: 0,
+  display: "flex",
+  background: "white",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  height: "100%",
 };
