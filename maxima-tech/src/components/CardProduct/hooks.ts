@@ -1,5 +1,5 @@
 import { IProduct } from "@interfaces/components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@libs/reactRouterDom";
 
 export const useCardProduct = () => {
   const navigate = useNavigate();

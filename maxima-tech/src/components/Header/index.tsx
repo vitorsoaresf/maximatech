@@ -17,14 +17,20 @@ import {
   TextComponent,
   UnorderedListComponent,
 } from "@libs/chakra";
-import { Link } from "@libs/reactRouterDom";
+import { Link, useNavigate } from "@libs/reactRouterDom";
 import { Input } from "@components";
 import { Icon } from "@assets/icons";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <FlexComponent as="nav" {...ContainerHeaderStyled}>
-      <HeadingComponent as="h1" {...ContainerHeadingStyled}>
+      <HeadingComponent
+        as="h1"
+        onClick={() => navigate("/")}
+        {...ContainerHeadingStyled}
+      >
         <TextComponent {...ContainerTitleInitialCharacterStyled}>
           e
         </TextComponent>

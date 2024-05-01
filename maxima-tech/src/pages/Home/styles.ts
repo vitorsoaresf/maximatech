@@ -14,6 +14,7 @@ export const HomeStyled: StyleComponents = {
   padding: ["20px 20px", "20px 45px"],
   flexDirection: "column",
   alignItems: "center",
+  marginBottom: "200px",
 };
 
 export const ButtonsFilterStyled: StyleComponents = {

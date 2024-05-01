@@ -2,7 +2,7 @@ import { ListProps } from "@chakra-ui/react";
 import { StyleComponents } from "@interfaces/components";
 import { theme } from "@styles";
 
-export const ContainerHeaderStyled: StyleComponents = {
+export const ContainerFooterStyled: StyleComponents = {
   padding: "20px 20px",
   backgroundColor: theme.palette.gray["100"],
   display: "flex",
@@ -11,6 +11,11 @@ export const ContainerHeaderStyled: StyleComponents = {
   justifyContent: ["center", "center", "space-between"],
   alignItems: "center",
   minHeight: "111px",
+  width: " 100%",
+  height: "100px",
+  position: "absolute",
+  bottom: "0",
+  left: "0",
 };
 
 export const ContainerHeadingStyled: StyleComponents = {
@@ -48,7 +53,8 @@ export const styledHover = {
 
 export const ContainerItemListStyled: StyleComponents = {
   ...styledHover,
-  fontWeight: "bold",
+  fontWeight: theme.typography.fontWeights.normal,
+  fontSize: theme.typography.fontSize.xl,
   display: "flex",
   gap: "16px",
 };

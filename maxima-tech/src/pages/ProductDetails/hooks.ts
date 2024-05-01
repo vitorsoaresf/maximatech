@@ -1,6 +1,7 @@
 import { ProductService } from "@services/Products";
 import { useQuery } from "@libs/reactQuery";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "@libs/reactRouterDom";
+
 import { IProduct } from "@interfaces/components";
 
 export const useProductDetails = () => {
