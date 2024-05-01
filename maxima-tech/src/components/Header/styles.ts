@@ -10,6 +10,7 @@ export const ContainerHeaderStyled: StyleComponents = {
   fontFamily: theme.typography.fonts.poppins,
   justifyContent: ["center", "center", "space-between"],
   alignItems: "center",
+  minHeight: "111px",
 };
 
 export const ContainerHeadingStyled: StyleComponents = {

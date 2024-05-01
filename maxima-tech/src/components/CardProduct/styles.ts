@@ -2,7 +2,7 @@ import { StyleComponents } from "@interfaces/components";
 import { theme } from "@styles";
 
 export const CardStyled: StyleComponents = {
-  width: "413.46px",
+  width: ["300px", "413.46px"],
 };
 
 export const ImageStyled: StyleComponents = {
