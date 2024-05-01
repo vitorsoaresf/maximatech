@@ -23,8 +23,8 @@ export const useProduct = () => {
     setOrderSelected(order);
   };
 
-  const laodProductsPage = async () => {
-    const response = await ProductService.laodProducts();
+  const loadProductsPage = async () => {
+    const response = await ProductService.loadProducts();
 
     if (response.ok) {
       return response.json();
@@ -34,7 +34,7 @@ export const useProduct = () => {
 
   const productList = useQuery({
     queryKey: ["products"],
-    queryFn: laodProductsPage,
+    queryFn: loadProductsPage,
     initialData: [],
   });
 

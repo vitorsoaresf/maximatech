@@ -1,8 +1,12 @@
 import { baseURL } from "@services/base/environment";
 
 export const ProductService = {
-  laodProducts: () =>
+  loadProducts: () =>
     fetch(`${baseURL}/products`, {
+      method: "GET",
+    }),
+  loadSpecificProducts: (id: string) =>
+    fetch(`${baseURL}/products/${id}`, {
       method: "GET",
     }),
 };
