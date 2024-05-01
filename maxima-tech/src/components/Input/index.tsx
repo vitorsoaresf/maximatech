@@ -58,7 +58,7 @@ export const Input = forwardRef(
             {...rest}
           />
           {actionBtRightPosition && (
-            <InputRightElementComponent width="4.5rem">
+            <InputRightElementComponent>
               {actionBtRightPosition}
             </InputRightElementComponent>
           )}

@@ -49,5 +49,6 @@ export const typography = {
     xl: "18px",
     xxl: "24px",
     xxxl: "32px",
+    xxxxl: "40px",
   },
 };
