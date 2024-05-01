@@ -1,6 +1,6 @@
 import { ListProps } from "@chakra-ui/react";
 import { StyleComponents } from "@interfaces/components";
-import { theme } from "@styles/index";
+import { theme } from "@styles";
 
 export const ContainerHeaderStyled: StyleComponents = {
   padding: "20px 20px",
@@ -15,7 +15,7 @@ export const ContainerHeaderStyled: StyleComponents = {
 export const ContainerHeadingStyled: StyleComponents = {
   fontSize: theme.typography.fontSize.xxxxl,
   textAlign: "left",
-  fontFamily: "Sonsie One",
+  fontFamily: "Sonsie One , Verdana,Arial, Helvetica, sans-serif",
   display: "flex",
   marginRight: theme.spacing.lg,
 };

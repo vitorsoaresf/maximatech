@@ -2,12 +2,19 @@ import { IProduct } from "@interfaces/components";
 import {
   CardBodyComponent,
   CardComponent,
-  DividerComponent,
+  FlexComponent,
   HeadingComponent,
   ImageComponent,
   StackComponent,
   TextComponent,
 } from "@libs/chakra";
+import {
+  DescriptionCardStyled,
+  DiscountPercentageCardStyled,
+  ImageStyled,
+  PriceCardStyled,
+  TitleCardStyled,
+} from "./styles";
 
 interface ICardProduct {
   product: IProduct;
@@ -20,21 +27,30 @@ export const CardProduct = ({ product }: ICardProduct) => {
         <ImageComponent
           src={product.image}
           alt={product.description}
-          borderRadius="lg"
+          {...ImageStyled}
         />
-        <StackComponent mt="6" spacing="3">
-          <HeadingComponent size="md">{product.name}</HeadingComponent>
-          <TextComponent color="blue.600" fontSize="2xl">
-            ${product.price}
-          </TextComponent>
-          {product.promotional_price && (
-            <TextComponent color="blue.600" fontSize="2xl">
-              ${product.promotional_price}
+        <StackComponent {...DescriptionCardStyled}>
+          <HeadingComponent {...TitleCardStyled}>
+            {product.name}
+          </HeadingComponent>
+
+          <FlexComponent {...PriceCardStyled}>
+            <TextComponent
+              textDecoration={product.promotional_price && "line-through"}
+            >
+              ${product.price}
             </TextComponent>
-          )}
+            {product.promotional_price && (
+              <TextComponent>${product.promotional_price}</TextComponent>
+            )}
+          </FlexComponent>
         </StackComponent>
+        {product.discount_percentage && (
+          <FlexComponent {...DiscountPercentageCardStyled}>
+            <TextComponent>${product.discount_percentage} OFF</TextComponent>
+          </FlexComponent>
+        )}
       </CardBodyComponent>
-      <DividerComponent />
     </CardComponent>
   );
 };

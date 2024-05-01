@@ -1,6 +1,9 @@
 import { ChakraProvider } from "@libs/chakra.ts";
-import { theme } from "@styles/index";
+import { ReactQueryProvider } from "@libs/reactQuery";
+import { theme } from "@styles";
 
 export const AppProvider = ({ children }: any) => (
-  <ChakraProvider theme={theme}>{children}</ChakraProvider>
+  <ReactQueryProvider>
+    <ChakraProvider theme={theme}>{children}</ChakraProvider>
+  </ReactQueryProvider>
 );

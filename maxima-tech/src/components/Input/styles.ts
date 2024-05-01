@@ -1,5 +1,5 @@
 import { StyleComponents } from "@interfaces/components";
-import { theme } from "@styles/index";
+import { theme } from "@styles";
 
 export const ContainerInputStyled: StyleComponents = {
   display: "flex",

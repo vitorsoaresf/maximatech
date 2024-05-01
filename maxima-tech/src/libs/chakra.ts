@@ -17,7 +17,6 @@ import {
   forwardRef,
   Card,
   CardBody,
-  Divider,
 } from "@chakra-ui/react";
 
 export {
@@ -39,5 +38,4 @@ export {
   forwardRef,
   Card as CardComponent,
   CardBody as CardBodyComponent,
-  Divider as DividerComponent,
 };
