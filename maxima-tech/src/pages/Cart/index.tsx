@@ -14,6 +14,7 @@ import {
   ContainerImage,
   ContainerInfoStyled,
   ContainerProductStyled,
+  DescriptionContentStyled,
   DescriptionStyled,
   DetailsStyled,
   ImageProductStyled,
@@ -34,28 +35,43 @@ export const Cart = () => {
           </BreadcrumbItemComponent>
 
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLinkComponent>Carrinho</BreadcrumbLinkComponent>
+            <BreadcrumbLinkComponent>{product.name}</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        {/* <ImageComponent
+        <ImageComponent
           src={product.image}
           alt={product.description}
           {...ImageProductStyled}
-        /> */}
-        <FlexComponent {...ContainerInfoStyled}>
-          <FlexComponent {...DetailsStyled}>
-            <HeadingComponent {...NameStyled}>{product.name}</HeadingComponent>
-            <HeadingComponent {...PriceStyled}>
-              R$ {product.price}
-            </HeadingComponent>
+        />
+      </FlexComponent>
 
-            <HeadingComponent {...DescriptionStyled}>
-              Descrição
-            </HeadingComponent>
-            <TextComponent>{product.description}</TextComponent>
-          </FlexComponent>
-          <ButtonComponent>ADICIONAR AO CARRINHO</ButtonComponent>
+      <FlexComponent {...ContainerInfoStyled}>
+        <FlexComponent {...DetailsStyled}>
+          <HeadingComponent {...NameStyled}>{product.name}</HeadingComponent>
+          <HeadingComponent {...PriceStyled}>
+            R$ {product.price}
+          </HeadingComponent>
+
+          <HeadingComponent {...DescriptionStyled}>Descrição</HeadingComponent>
+          <TextComponent
+            {...DescriptionContentStyled}
+            css={{
+              "&::-webkit-scrollbar": {
+                width: "12px",
+              },
+              "&::-webkit-scrollbar-track": {
+                width: "12px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                background: "white",
+                borderRadius: "24px",
+              },
+            }}
+          >
+            {product.description}
+          </TextComponent>
         </FlexComponent>
+        <ButtonComponent>ADICIONAR AO CARRINHO</ButtonComponent>
       </FlexComponent>
     </FlexComponent>
   );
