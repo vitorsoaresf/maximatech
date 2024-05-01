@@ -42,6 +42,7 @@ export const typography = {
     montserrat: "Montserrat, Verdana,Arial, Helvetica, sans-serif",
     poppins: "Poppins, Verdana,Arial, Helvetica, sans-serif",
     sosieone: "Sonsie One, Verdana,Arial, Helvetica, sans-serif",
+    saira: "Saira, Verdana,Arial, Helvetica, sans-serif",
   },
   fontSize: {
     xxs: "8px",

@@ -42,4 +42,5 @@ export interface IProduct {
   promotional_price?: number;
   image: string;
   description: string;
+  quantity?: number;
 }

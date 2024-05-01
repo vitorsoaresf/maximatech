@@ -25,8 +25,8 @@ import { BreadcrumbItem } from "@chakra-ui/react";
 import { useProduct } from "@hooks/useProducts";
 
 export const ProductDetails = () => {
-  const { product, redirectPage } = useProductDetails();
-  const { addProductCart } = useProduct();
+  const { product } = useProductDetails();
+  const { addProductCart, redirectPage } = useProduct();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>

@@ -22,9 +22,11 @@ import {
   PriceStyled,
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
+import { useProduct } from "@hooks/useProducts";
+import { CardCart } from "@components";
 
 export const Cart = () => {
-  const { product, redirectPage } = useProductDetails();
+  const { cartProducts, redirectPage } = useProduct();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
@@ -35,44 +37,15 @@ export const Cart = () => {
           </BreadcrumbItemComponent>
 
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLinkComponent>{product.name}</BreadcrumbLinkComponent>
+            <BreadcrumbLinkComponent>Carrinho</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        <ImageComponent
-          src={product.image}
-          alt={product.description}
-          {...ImageProductStyled}
-        />
+        {cartProducts.map((item) => (
+          <CardCart key={crypto.randomUUID()} product={item} />
+        ))}
       </FlexComponent>
 
-      <FlexComponent {...ContainerInfoStyled}>
-        <FlexComponent {...DetailsStyled}>
-          <HeadingComponent {...NameStyled}>{product.name}</HeadingComponent>
-          <HeadingComponent {...PriceStyled}>
-            R$ {product.price}
-          </HeadingComponent>
-
-          <HeadingComponent {...DescriptionStyled}>Descrição</HeadingComponent>
-          <TextComponent
-            {...DescriptionContentStyled}
-            css={{
-              "&::-webkit-scrollbar": {
-                width: "12px",
-              },
-              "&::-webkit-scrollbar-track": {
-                width: "12px",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                background: "white",
-                borderRadius: "24px",
-              },
-            }}
-          >
-            {product.description}
-          </TextComponent>
-        </FlexComponent>
-        <ButtonComponent>ADICIONAR AO CARRINHO</ButtonComponent>
-      </FlexComponent>
+      <FlexComponent {...ContainerInfoStyled}></FlexComponent>
     </FlexComponent>
   );
 };

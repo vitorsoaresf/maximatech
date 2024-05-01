@@ -3,14 +3,16 @@ import { useQuery } from "@libs/reactQuery";
 import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
 import { CATEGORY_LIST, ELEMENT_PER_PAGE } from "@constants/Products";
+import { useNavigate } from "react-router-dom";
 
 export const useProduct = () => {
+  const navigation = useNavigate();
   const [countPage, setCountPage] = useState({ rangeMin: 0, rangeMax: 6 });
   const [orderSelected, setOrderSelected] = useState<string>("");
   const [categorySelected, setCategorySelected] = useState<string>(
     CATEGORY_LIST[0]
   );
-  const listProducts: Array<IProduct> =
+  const cartProducts: Array<IProduct> =
     JSON.parse(localStorage.getItem("@MaximaTech:products") as any) ?? [];
 
   const handlePagination = (rangeMin: number, rangeMax: number) => {
@@ -47,7 +49,7 @@ export const useProduct = () => {
   };
 
   const verifyIfComponentHasAlreadyBeenAdded = (product: IProduct) => {
-    return listProducts.some((item) => item.id === product.id);
+    return cartProducts.some((item) => item.id === product.id);
   };
 
   const saveLocalStorage = (products: Array<IProduct>) => {
@@ -56,17 +58,33 @@ export const useProduct = () => {
 
   const addProductCart = (product: IProduct) => {
     if (!verifyIfComponentHasAlreadyBeenAdded(product)) {
-      listProducts.push(product);
-      saveLocalStorage(listProducts);
+      cartProducts.push({ ...product, quantity: 1 });
+      saveLocalStorage(cartProducts);
     }
   };
 
+  const updateQuantityProduct = (product: IProduct, quantity: number) => {
+    const result = cartProducts.map((item) => {
+      if (item.id === product.id) {
+        product.quantity = Number(quantity);
+      }
+
+      return product;
+    });
+
+    saveLocalStorage(result);
+  };
+
   const removeProductCart = (product: IProduct) => {
-    listProducts.splice(
-      listProducts.findIndex((item) => item.id === product.id),
+    cartProducts.splice(
+      cartProducts.findIndex((item) => item.id === product.id),
       1
     );
-    saveLocalStorage(listProducts);
+    saveLocalStorage(cartProducts);
+  };
+
+  const redirectPage = (path: string) => {
+    navigation(`/${path}`);
   };
 
   const filterProductsByOrder = (products: Array<IProduct>) => {
@@ -111,5 +129,8 @@ export const useProduct = () => {
     orderSelected,
     addProductCart,
     removeProductCart,
+    cartProducts,
+    updateQuantityProduct,
+    redirectPage,
   };
 };

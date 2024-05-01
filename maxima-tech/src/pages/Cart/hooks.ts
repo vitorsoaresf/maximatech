@@ -1,12 +1,11 @@
 import { ProductService } from "@services/Products";
 import { useQuery } from "@libs/reactQuery";
-import { useNavigate, useParams } from "@libs/reactRouterDom";
+import { useParams } from "@libs/reactRouterDom";
 
 import { IProduct } from "@interfaces/components";
 
 export const useProductDetails = () => {
   const { id: idProduct } = useParams();
-  const navigation = useNavigate();
 
   const loadProductDetail = async () => {
     const response = await ProductService.loadSpecificProducts(
@@ -19,10 +18,6 @@ export const useProductDetails = () => {
     throw new Error();
   };
 
-  const redirectPage = (path: string) => {
-    navigation(`/${path}`);
-  };
-
   const productDetails = useQuery({
     queryKey: ["productDetails"],
     queryFn: loadProductDetail,
@@ -33,6 +28,5 @@ export const useProductDetails = () => {
 
   return {
     product,
-    redirectPage,
   };
 };
