@@ -18,14 +18,22 @@ import {
   TitleCardStyled,
 } from "./styles";
 import { IconNewTab } from "@assets/icons/NewTab";
+import { useCardProduct } from "./hooks";
 
 interface ICardProduct {
   product: IProduct;
 }
 
 export const CardProduct = ({ product }: ICardProduct) => {
+  const { redirectRouteDetailsProduct } = useCardProduct();
+
   return (
-    <CardComponent as="li" maxW="sm" {...CardStyled}>
+    <CardComponent
+      as="li"
+      maxW="sm"
+      {...CardStyled}
+      onClick={() => redirectRouteDetailsProduct(product)}
+    >
       <CardBodyComponent>
         <ImageComponent
           src={product.image}
