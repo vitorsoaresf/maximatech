@@ -11,7 +11,10 @@ export const ButtonFilterProduct = ({ label, onClick }: IButtonFilter) => {
   return (
     <ButtonComponent
       onClick={onClick}
-      _hover={{ backgroundColor: theme.palette.blue["550"] }}
+      _hover={{
+        backgroundColor: theme.palette.blue["550"],
+        color: theme.palette.white,
+      }}
       {...ButtonStyled}
     >
       {label}
