@@ -17,6 +17,7 @@ import {
   forwardRef,
   Card,
   CardBody,
+  Select,
 } from "@chakra-ui/react";
 
 export {
@@ -38,4 +39,5 @@ export {
   forwardRef,
   Card as CardComponent,
   CardBody as CardBodyComponent,
+  Select as SelectComponent,
 };

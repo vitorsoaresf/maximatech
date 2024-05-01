@@ -34,6 +34,11 @@ export const OrderElementsStyled: StyleComponents = {
   fontSize: theme.typography.fontSize.xl,
 };
 
+export const SelectElementsStyled: StyleComponents = {
+  maxWidth: "311.38px",
+  maxHeight: "50px",
+};
+
 export const ProductListStyled: StyleComponents = {
   justifyContent: ["center", "center", "center", "space-between"],
   flexWrap: "wrap",

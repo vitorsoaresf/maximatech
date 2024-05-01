@@ -1,4 +1,9 @@
-import { FlexComponent, ImageComponent, TextComponent } from "@libs/chakra";
+import {
+  FlexComponent,
+  ImageComponent,
+  SelectComponent,
+  TextComponent,
+} from "@libs/chakra";
 import { useProduct } from "./hooks";
 import { CardProduct, Paging } from "@components";
 import { IProduct } from "@interfaces/components";
@@ -10,8 +15,9 @@ import {
   OrderElementsStyled,
   PagingContainerStyled,
   ProductListStyled,
+  SelectElementsStyled,
 } from "./styles";
-import { ELEMENT_PER_PAGE, CATEGORY_LIST } from "./constants";
+import { ELEMENT_PER_PAGE, CATEGORY_LIST, ORDER_LIST } from "./constants";
 import { ButtonFilterProduct } from "@components";
 import ImgMain from "@assets/img/cover.svg";
 
@@ -21,7 +27,9 @@ export const Home = () => {
     countPage,
     handlePagination,
     handleCategory,
+    handleOrder,
     quantityProducts,
+    orderSelected,
   } = useProduct();
 
   return (
@@ -45,7 +53,18 @@ export const Home = () => {
         </FlexComponent>
         <FlexComponent {...OrderElementsStyled}>
           <TextComponent>{products.length} Produtos</TextComponent>
-          <TextComponent>{products.length} Produtos</TextComponent>
+          <SelectComponent
+            placeholder="(Todos)"
+            onChange={(e: any) => handleOrder(e.target.value)}
+            value={orderSelected}
+            {...SelectElementsStyled}
+          >
+            {ORDER_LIST.map((item: any) => (
+              <option key={crypto.randomUUID()} value={item.value}>
+                {item.label}
+              </option>
+            ))}
+          </SelectComponent>
         </FlexComponent>
         <FlexComponent as="ul" {...ProductListStyled}>
           {products
