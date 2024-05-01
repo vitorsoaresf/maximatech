@@ -2,7 +2,7 @@ import { ProductService } from "@services/Products";
 import { useQuery } from "@libs/reactQuery";
 import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
-import { CATEGORY_LIST, ELEMENT_PER_PAGE } from "../../constants/Products";
+import { CATEGORY_LIST, ELEMENT_PER_PAGE } from "@constants/Products";
 
 export const useProduct = () => {
   const [countPage, setCountPage] = useState({ rangeMin: 0, rangeMax: 6 });
@@ -10,6 +10,8 @@ export const useProduct = () => {
   const [categorySelected, setCategorySelected] = useState<string>(
     CATEGORY_LIST[0]
   );
+  const listProducts: Array<IProduct> =
+    JSON.parse(localStorage.getItem("@MaximaTech:products") as any) ?? [];
 
   const handlePagination = (rangeMin: number, rangeMax: number) => {
     setCountPage({ rangeMin, rangeMax });
@@ -42,6 +44,20 @@ export const useProduct = () => {
     return products.filter((item: IProduct) =>
       item.category.includes(categorySelected)
     );
+  };
+
+  const verifyIfComponentHasAlreadyBeenAdded = (product: IProduct) => {
+    return listProducts.some((item) => item.id === product.id);
+  };
+
+  const addProductCart = (product: IProduct) => {
+    if (!verifyIfComponentHasAlreadyBeenAdded(product)) {
+      listProducts.push(product);
+      localStorage.setItem(
+        "@MaximaTech:products",
+        JSON.stringify(listProducts)
+      );
+    }
   };
 
   const filterProductsByOrder = (products: Array<IProduct>) => {
@@ -84,5 +100,6 @@ export const useProduct = () => {
     quantityProducts,
     handleOrder,
     orderSelected,
+    addProductCart,
   };
 };

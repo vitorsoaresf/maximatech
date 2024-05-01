@@ -16,6 +16,8 @@
       "@*": ["*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
+      "@constants/*": ["constants/*"],
       "@contexts/*": ["contexts/*"],
       "@interfaces/*": ["interfaces/*"],
       "@libs/*": ["libs/*"],

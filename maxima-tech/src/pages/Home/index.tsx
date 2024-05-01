@@ -4,7 +4,7 @@ import {
   SelectComponent,
   TextComponent,
 } from "@libs/chakra";
-import { useProduct } from "./hooks";
+import { useProduct } from "@hooks/useProducts";
 import { CardProduct, Paging } from "@components";
 import { IProduct } from "@interfaces/components";
 import {
@@ -17,7 +17,11 @@ import {
   ProductListStyled,
   SelectElementsStyled,
 } from "./styles";
-import { ELEMENT_PER_PAGE, CATEGORY_LIST, ORDER_LIST } from "./constants";
+import {
+  ELEMENT_PER_PAGE,
+  CATEGORY_LIST,
+  ORDER_LIST,
+} from "@constants/Products";
 import { ButtonFilterProduct } from "@components";
 import ImgMain from "@assets/img/cover.svg";
 
