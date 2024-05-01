@@ -39,6 +39,9 @@ export const typography = {
     heading: `Poppins ,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
     body: `Poppins,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
     mono: `Poppins,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`,
+    montserrat: "Montserrat, Verdana,Arial, Helvetica, sans-serif",
+    poppins: "Poppins, Verdana,Arial, Helvetica, sans-serif",
+    sosieone: "Sonsie One, Verdana,Arial, Helvetica, sans-serif",
   },
   fontSize: {
     xxs: "8px",

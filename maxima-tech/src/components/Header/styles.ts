@@ -7,7 +7,7 @@ export const ContainerHeaderStyled: StyleComponents = {
   backgroundColor: theme.palette.gray["100"],
   display: "flex",
   flexDirection: ["column", "column", "row"],
-  fontFamily: theme.typography.fonts.body,
+  fontFamily: theme.typography.fonts.poppins,
   justifyContent: ["center", "center", "space-between"],
   alignItems: "center",
 };
@@ -15,7 +15,7 @@ export const ContainerHeaderStyled: StyleComponents = {
 export const ContainerHeadingStyled: StyleComponents = {
   fontSize: theme.typography.fontSize.xxxxl,
   textAlign: "left",
-  fontFamily: "Sonsie One , Verdana,Arial, Helvetica, sans-serif",
+  fontFamily: theme.typography.fonts.sosieone,
   display: "flex",
   marginRight: theme.spacing.lg,
 };

@@ -41,5 +41,5 @@ export const DiscountPercentageCardStyled: StyleComponents = {
   fontSize: "16px",
   color: "white",
   fontWeight: theme.typography.fontWeights.medium,
-  fontFamily: "Montserrat, Verdana,Arial, Helvetica, sans-serif",
+  fontFamily: theme.typography.fonts.montserrat,
 };

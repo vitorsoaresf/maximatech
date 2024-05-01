@@ -3,7 +3,6 @@ import { theme } from "@styles";
 
 export const HomeStyled: StyleComponents = {
   padding: "20px 20px",
-  // justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
 };
@@ -22,4 +21,9 @@ export const ProductListStyled: StyleComponents = {
   justifyContent: "center",
   flexWrap: "wrap",
   gap: theme.spacing.md,
+  marginBottom: "40px",
+};
+
+export const PagingContainerStyled: StyleComponents = {
+  gap: "12px",
 };
