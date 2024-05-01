@@ -15,6 +15,9 @@ import {
   InputRightElement,
   Text,
   forwardRef,
+  Card,
+  CardBody,
+  Divider,
 } from "@chakra-ui/react";
 
 export {
@@ -34,4 +37,7 @@ export {
   InputRightElement as InputRightElementComponent,
   Text as TextComponent,
   forwardRef,
+  Card as CardComponent,
+  CardBody as CardBodyComponent,
+  Divider as DividerComponent,
 };
