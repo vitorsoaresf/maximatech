@@ -18,6 +18,9 @@ import {
   Card,
   CardBody,
   Select,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from "@chakra-ui/react";
 
 export {
@@ -40,4 +43,7 @@ export {
   Card as CardComponent,
   CardBody as CardBodyComponent,
   Select as SelectComponent,
+  Breadcrumb as BreadcrumbComponent,
+  BreadcrumbItem as BreadcrumbItemComponent,
+  BreadcrumbLink as BreadcrumbLinkComponent,
 };

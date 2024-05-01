@@ -5,10 +5,11 @@ export const ContainerProductStyled: StyleComponents = {
   padding: "0 100px",
   justifyContent: "center",
   gap: "150px",
+  marginTop: theme.spacing.xxl,
 };
 
 export const ContainerImage: StyleComponents = {
-  //   width: "100%",
+  flexDirection: "column",
 };
 
 export const ImageProductStyled: StyleComponents = {
@@ -58,4 +59,8 @@ export const DescriptionStyled: StyleComponents = {
   fontSize: theme.typography.fontSize.xxxl,
   fontWeight: theme.typography.fontWeights.normal,
   marginBottom: theme.spacing.xl,
+};
+
+export const BreadcrunberStyled: StyleComponents = {
+  padding: "10px",
 };

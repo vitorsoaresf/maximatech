@@ -1,4 +1,7 @@
 import {
+  BreadcrumbComponent,
+  BreadcrumbItemComponent,
+  BreadcrumbLinkComponent,
   ButtonComponent,
   FlexComponent,
   HeadingComponent,
@@ -7,6 +10,7 @@ import {
 } from "@libs/chakra";
 import { useProductDetails } from "./hooks";
 import {
+  BreadcrunberStyled,
   ContainerImage,
   ContainerInfoStyled,
   ContainerProductStyled,
@@ -16,13 +20,25 @@ import {
   NameStyled,
   PriceStyled,
 } from "./styles";
+import { BreadcrumbItem } from "@chakra-ui/react";
 
 export const ProductDetails = () => {
-  const { product } = useProductDetails();
+  const { product, redirectPage } = useProductDetails();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
       <FlexComponent {...ContainerImage}>
+        <BreadcrumbComponent {...BreadcrunberStyled}>
+          <BreadcrumbItemComponent onClick={() => redirectPage("")}>
+            <BreadcrumbLinkComponent>Home</BreadcrumbLinkComponent>
+          </BreadcrumbItemComponent>
+
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLinkComponent>
+              Detalhes do Produto
+            </BreadcrumbLinkComponent>
+          </BreadcrumbItem>
+        </BreadcrumbComponent>
         <ImageComponent
           src={product.image}
           alt={product.description}
