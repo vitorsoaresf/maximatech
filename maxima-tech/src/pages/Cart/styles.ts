@@ -4,11 +4,8 @@ import { theme } from "@styles";
 export const ContainerProductStyled: StyleComponents = {
   padding: "0 100px",
   justifyContent: "center",
-  alignItems: ["center", "center", "center", "unset"],
-  flexDirection: ["column", "column", "column", "row"],
   gap: "150px",
   marginTop: theme.spacing.xxl,
-  marginBottom: "200px",
 };
 
 export const ContainerImage: StyleComponents = {
@@ -17,13 +14,14 @@ export const ContainerImage: StyleComponents = {
 
 export const ImageProductStyled: StyleComponents = {
   maxWidth: "514px",
+  maxHeight: "514px",
   width: "100%",
+  height: "441.38px",
 };
 
 export const ContainerInfoStyled: StyleComponents = {
   flexDirection: "column",
   justifyContent: "space-between",
-  maxHeight: "100%",
 };
 
 export const DetailsStyled: StyleComponents = {
@@ -32,7 +30,6 @@ export const DetailsStyled: StyleComponents = {
   justifyContent: "start",
   maxHeight: "514px",
   maxWidth: "501px",
-  padding: "20px 0",
 };
 
 const fontStyleMontserrat: StyleComponents = {
@@ -64,11 +61,6 @@ export const DescriptionStyled: StyleComponents = {
   marginBottom: theme.spacing.xl,
 };
 
-export const DescriptionContentStyled: StyleComponents = {
-  wordBreak: "break-word",
-  overflowY: "scroll",
-};
-
 export const BreadcrunberStyled: StyleComponents = {
-  padding: "10px",
+  padding: "10px 0",
 };

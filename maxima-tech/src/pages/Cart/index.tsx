@@ -14,7 +14,6 @@ import {
   ContainerImage,
   ContainerInfoStyled,
   ContainerProductStyled,
-  DescriptionContentStyled,
   DescriptionStyled,
   DetailsStyled,
   ImageProductStyled,
@@ -23,7 +22,7 @@ import {
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
 
-export const ProductDetails = () => {
+export const Cart = () => {
   const { product, redirectPage } = useProductDetails();
 
   return (
@@ -35,43 +34,28 @@ export const ProductDetails = () => {
           </BreadcrumbItemComponent>
 
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLinkComponent>{product.name}</BreadcrumbLinkComponent>
+            <BreadcrumbLinkComponent>Carrinho</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        <ImageComponent
+        {/* <ImageComponent
           src={product.image}
           alt={product.description}
           {...ImageProductStyled}
-        />
-      </FlexComponent>
+        /> */}
+        <FlexComponent {...ContainerInfoStyled}>
+          <FlexComponent {...DetailsStyled}>
+            <HeadingComponent {...NameStyled}>{product.name}</HeadingComponent>
+            <HeadingComponent {...PriceStyled}>
+              R$ {product.price}
+            </HeadingComponent>
 
-      <FlexComponent {...ContainerInfoStyled}>
-        <FlexComponent {...DetailsStyled}>
-          <HeadingComponent {...NameStyled}>{product.name}</HeadingComponent>
-          <HeadingComponent {...PriceStyled}>
-            R$ {product.price}
-          </HeadingComponent>
-
-          <HeadingComponent {...DescriptionStyled}>Descrição</HeadingComponent>
-          <TextComponent
-            {...DescriptionContentStyled}
-            css={{
-              "&::-webkit-scrollbar": {
-                width: "12px",
-              },
-              "&::-webkit-scrollbar-track": {
-                width: "12px",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                background: "white",
-                borderRadius: "24px",
-              },
-            }}
-          >
-            {product.description}
-          </TextComponent>
+            <HeadingComponent {...DescriptionStyled}>
+              Descrição
+            </HeadingComponent>
+            <TextComponent>{product.description}</TextComponent>
+          </FlexComponent>
+          <ButtonComponent>ADICIONAR AO CARRINHO</ButtonComponent>
         </FlexComponent>
-        <ButtonComponent>ADICIONAR AO CARRINHO</ButtonComponent>
       </FlexComponent>
     </FlexComponent>
   );
