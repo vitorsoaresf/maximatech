@@ -5,4 +5,6 @@ export const spacings = {
   md: "8px",
   lg: "16px",
   xl: "24px",
+  xxl: "48px",
+  xxxl: "64px",
 };

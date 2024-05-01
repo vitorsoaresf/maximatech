@@ -1,8 +1,12 @@
 import { StyleComponents } from "@interfaces/components";
 import { theme } from "@styles";
 
-export const ImageStyled: StyleComponents = {
+export const CardStyled: StyleComponents = {
   width: "413.46px",
+};
+
+export const ImageStyled: StyleComponents = {
+  width: "100%",
   height: "441.38px",
   objectFit: "cover",
 };

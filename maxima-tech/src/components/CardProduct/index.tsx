@@ -9,6 +9,7 @@ import {
   TextComponent,
 } from "@libs/chakra";
 import {
+  CardStyled,
   DescriptionCardStyled,
   DiscountPercentageCardStyled,
   ImageStyled,
@@ -22,7 +23,7 @@ interface ICardProduct {
 
 export const CardProduct = ({ product }: ICardProduct) => {
   return (
-    <CardComponent as="li" maxW="sm">
+    <CardComponent as="li" maxW="sm" {...CardStyled}>
       <CardBodyComponent>
         <ImageComponent
           src={product.image}
