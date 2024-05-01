@@ -50,14 +50,23 @@ export const useProduct = () => {
     return listProducts.some((item) => item.id === product.id);
   };
 
+  const saveLocalStorage = (products: Array<IProduct>) => {
+    localStorage.setItem("@MaximaTech:products", JSON.stringify(products));
+  };
+
   const addProductCart = (product: IProduct) => {
     if (!verifyIfComponentHasAlreadyBeenAdded(product)) {
       listProducts.push(product);
-      localStorage.setItem(
-        "@MaximaTech:products",
-        JSON.stringify(listProducts)
-      );
+      saveLocalStorage(listProducts);
     }
+  };
+
+  const removeProductCart = (product: IProduct) => {
+    listProducts.splice(
+      listProducts.findIndex((item) => item.id === product.id),
+      1
+    );
+    saveLocalStorage(listProducts);
   };
 
   const filterProductsByOrder = (products: Array<IProduct>) => {
@@ -101,5 +110,6 @@ export const useProduct = () => {
     handleOrder,
     orderSelected,
     addProductCart,
+    removeProductCart,
   };
 };
