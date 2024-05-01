@@ -1,11 +1,10 @@
 import { ProductService } from "@services/Products";
 import { useQuery } from "@libs/reactQuery";
 import { useParams } from "react-router-dom";
+import { IProduct } from "@interfaces/components";
 
 export const useProductDetails = () => {
   const { id: idProduct } = useParams();
-
-  console.log(idProduct);
 
   const loadProductDetail = async () => {
     const response = await ProductService.loadSpecificProducts(
@@ -24,7 +23,7 @@ export const useProductDetails = () => {
     initialData: [],
   });
 
-  const product = productDetails.data;
+  const product: IProduct = productDetails.data;
 
   return {
     product,
