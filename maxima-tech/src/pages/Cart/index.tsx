@@ -6,11 +6,12 @@ import {
   DividerComponent,
   FlexComponent,
   HeadingComponent,
+  ImageComponent,
   TextComponent,
 } from "@libs/chakra";
 import {
   BreadcrunberStyled,
-  ContainerImageStyled,
+  ContainerProductsStyled,
   ContainerAmountStyled,
   ContainerProductStyled,
   ContainerTitleStyled,
@@ -18,20 +19,29 @@ import {
   ContainerTotalStyled,
   ContainerButtonBuyProductsStyled,
   ContainerButtonClearCartStyled,
+  ContainerImageWithoutStyled,
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
 import { CardCart } from "@components";
 import { useRedirect } from "@hooks/useRedirect";
 import { useCart } from "@hooks/useCart";
 import { theme } from "@styles";
+import WithoutProducts from "@assets/img/without_products.svg";
 
 export const Cart = () => {
   const { redirectPage } = useRedirect();
-  const { cartState, amountPriceBuySubtotal, amountTotal } = useCart();
+  const {
+    cartState,
+    amountPriceBuySubtotal,
+    amountTotal,
+    finalizePurchase,
+    clearCart,
+    hasProducts,
+  } = useCart();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
-      <FlexComponent {...ContainerImageStyled}>
+      <FlexComponent {...ContainerProductsStyled}>
         <BreadcrumbComponent {...BreadcrunberStyled}>
           <BreadcrumbItemComponent onClick={() => redirectPage("")}>
             <BreadcrumbLinkComponent>Home</BreadcrumbLinkComponent>
@@ -41,9 +51,18 @@ export const Cart = () => {
             <BreadcrumbLinkComponent>Carrinho</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        {cartState.list.map((item) => (
-          <CardCart key={crypto.randomUUID()} product={item} />
-        ))}
+
+        {hasProducts ? (
+          cartState.list.map((item) => (
+            <CardCart key={crypto.randomUUID()} product={item} />
+          ))
+        ) : (
+          <ImageComponent
+            src={WithoutProducts}
+            alt="Não há produtos no carrinho"
+            {...ContainerImageWithoutStyled}
+          />
+        )}
       </FlexComponent>
 
       <FlexComponent {...ContainerAmountStyled}>
@@ -66,6 +85,8 @@ export const Cart = () => {
         </FlexComponent>
 
         <ButtonComponent
+          onClick={finalizePurchase}
+          isDisabled={cartState.list.length === 0}
           _hover={{
             backgroundColor: theme.palette.white,
             color: theme.palette.blue["550"],
@@ -76,6 +97,8 @@ export const Cart = () => {
           FINALIZAR COMPRA
         </ButtonComponent>
         <ButtonComponent
+          onClick={clearCart}
+          isDisabled={cartState.list.length === 0}
           _hover={{
             backgroundColor: theme.palette.white,
             color: theme.palette.red["550"],

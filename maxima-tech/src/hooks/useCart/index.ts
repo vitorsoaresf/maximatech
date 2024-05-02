@@ -92,15 +92,43 @@ export const useCart = () => {
     return result;
   };
 
+  const finalizePurchase = () => {
+    toast({
+      position: "top",
+      title: `Parabéns você finalizou suas compras com um valor total de R$ ${amountTotal}!`,
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+
+    saveLocalStorage([]);
+  };
+
+  const clearCart = () => {
+    toast({
+      position: "top",
+      title: "Carrinho limpo com sucesso!",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+
+    saveLocalStorage([]);
+  };
+
   const amountPriceBuySubtotal = calcAmountListProductsFromCart();
   const amountTotal = amountPriceBuySubtotal + DELIVERY_CUST;
+  const hasProducts = cartState.list.length > 0;
 
   return {
     cartState,
     addProductCart,
     removeProductCart,
     updateQuantityProduct,
+    finalizePurchase,
+    clearCart,
     amountPriceBuySubtotal,
     amountTotal,
+    hasProducts,
   };
 };

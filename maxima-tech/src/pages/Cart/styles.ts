@@ -10,7 +10,11 @@ export const ContainerProductStyled: StyleComponents = {
   marginBottom: "200px",
 };
 
-export const ContainerImageStyled: StyleComponents = {
+export const ContainerImageWithoutStyled: StyleComponents = {
+  width: "400px",
+};
+
+export const ContainerProductsStyled: StyleComponents = {
   flexDirection: "column",
 };
 
