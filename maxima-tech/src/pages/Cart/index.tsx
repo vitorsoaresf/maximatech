@@ -48,17 +48,22 @@ export const Cart = () => {
 
       <FlexComponent {...ContainerAmountStyled}>
         <HeadingComponent {...ContainerTitleStyled}>RESUMO</HeadingComponent>
-        <TextComponent {...ContainerValueStyled}>
-          Subtotal de produtos{" "}
+
+        <FlexComponent {...ContainerValueStyled}>
+          <TextComponent>Subtotal de produtos </TextComponent>
           <TextComponent>R$ {amountPriceBuySubtotal},00</TextComponent>
-        </TextComponent>
-        <TextComponent {...ContainerValueStyled}>
-          Entrega <TextComponent>R$ 40,00</TextComponent>
-        </TextComponent>
+        </FlexComponent>
+
+        <FlexComponent {...ContainerValueStyled}>
+          <TextComponent>Entrega</TextComponent>
+          <TextComponent>R$ 40,00</TextComponent>
+        </FlexComponent>
+
         <DividerComponent marginBottom="12px" />
-        <TextComponent {...ContainerTotalStyled}>
-          Total R$ <TextComponent>{amountTotal},00</TextComponent>
-        </TextComponent>
+        <FlexComponent {...ContainerTotalStyled}>
+          <TextComponent>Total R$</TextComponent>
+          <TextComponent>{amountTotal},00</TextComponent>
+        </FlexComponent>
 
         <ButtonComponent
           _hover={{

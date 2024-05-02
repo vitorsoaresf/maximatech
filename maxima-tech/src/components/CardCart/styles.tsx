@@ -25,7 +25,7 @@ export const CardDescriptionStyled: StyleComponents = {
   flexDirection: "column",
   marginLeft: ["0", "0", theme.spacing.xl],
   marginTop: [theme.spacing.xl, theme.spacing.xl, "0"],
-  width: ["300px", "429px"],
+  width: ["300px", "300px", "300px", "250px", "429px"],
 };
 
 const FontSairaStyled = {

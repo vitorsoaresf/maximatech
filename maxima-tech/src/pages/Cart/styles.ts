@@ -21,7 +21,7 @@ export const BreadcrunberStyled: StyleComponents = {
 export const ContainerAmountStyled: StyleComponents = {
   flexDirection: "column",
   maxHeight: "100%",
-  minWidth: "352px",
+  minWidth: ["200px", "300px", "300px", "300px", "352px"],
 };
 
 export const ContainerTitleStyled: StyleComponents = {
@@ -46,9 +46,11 @@ export const ContainerButtonBuyProductsStyled: StyleComponents = {
   backgroundColor: theme.palette.blue["550"],
   color: theme.palette.white,
   marginBottom: theme.spacing.xll,
+  display: "flex",
 };
 
 export const ContainerButtonClearCartStyled: StyleComponents = {
   backgroundColor: theme.palette.red["550"],
   color: theme.palette.white,
+  display: "flex",
 };
