@@ -76,7 +76,7 @@ export const Cart = () => {
 
         <FlexComponent {...ContainerValueStyled}>
           <TextComponent>Entrega</TextComponent>
-          <TextComponent>R$ 40,00</TextComponent>
+          <TextComponent>{hasProducts ? "R$ 40,00" : "R$ 0,00"}</TextComponent>
         </FlexComponent>
 
         <DividerComponent marginBottom="12px" />

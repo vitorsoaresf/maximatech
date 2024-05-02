@@ -33,6 +33,7 @@ import {
 } from "@contexts/ProductsProvider/actions";
 import { useEffect, useState } from "@libs/react";
 import ImgViewProducts from "@assets/img/eyes.svg";
+import { useCart } from "@hooks/useCart";
 
 export const Home = () => {
   const [categorySelected, setCategorySelected] = useState("");
@@ -46,8 +47,10 @@ export const Home = () => {
     filterProductsByCategory,
     filterProductsByOrder,
   } = useProduct();
+  const { loadProductsCart } = useCart();
 
   useEffect(() => {
+    loadProductsCart();
     setProductList(productDispatch, productList.data);
     setProductListFiltered(productDispatch, productList.data);
   }, [productList.data]);
@@ -96,7 +99,7 @@ export const Home = () => {
           </SelectComponent>
         </FlexComponent>
 
-        <FlexComponent as="ul" {...ProductListStyled}>
+        <FlexComponent as="ul" data-test="list-products" {...ProductListStyled}>
           {productState.listFiltered.length > 0 ? (
             productState.listFiltered
               .slice(countPage.rangeMin, countPage.rangeMax)

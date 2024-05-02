@@ -116,9 +116,17 @@ export const useCart = () => {
     saveLocalStorage([]);
   };
 
-  const amountPriceBuySubtotal = calcAmountListProductsFromCart();
-  const amountTotal = amountPriceBuySubtotal + DELIVERY_CUST;
+  const loadProductsCart = () => {
+    setCartList(
+      cartDispatch,
+      JSON.parse(localStorage.getItem("@MaximaTech:products") ?? ([] as any))
+    );
+  };
+
   const hasProducts = cartState.list.length > 0;
+  const amountPriceBuySubtotal = calcAmountListProductsFromCart();
+  const amountTotal =
+    amountPriceBuySubtotal + (hasProducts ? DELIVERY_CUST : 0);
 
   return {
     cartState,
@@ -127,6 +135,7 @@ export const useCart = () => {
     updateQuantityProduct,
     finalizePurchase,
     clearCart,
+    loadProductsCart,
     amountPriceBuySubtotal,
     amountTotal,
     hasProducts,

@@ -32,6 +32,7 @@ export const Header = () => {
     <FlexComponent as="nav" {...ContainerHeaderStyled}>
       <HeadingComponent
         as="h1"
+        data-test="ecommerce"
         onClick={() => navigate("/")}
         {...ContainerHeadingStyled}
       >
@@ -46,6 +47,7 @@ export const Header = () => {
           onChange={(e) => filteByrTerm(e.target.value)}
           actionBtRightPosition={Icon["search"]}
           width={["310px", "310px", "310px", "350px"]}
+          data-test="input-search-product"
         />
 
         <ListItemComponent {...ContainerItemListStyled}>
