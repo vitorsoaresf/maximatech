@@ -24,13 +24,11 @@ import {
 import { BreadcrumbItem } from "@chakra-ui/react";
 import { useRedirect } from "@hooks/useRedirect";
 import { useCart } from "@hooks/useCart";
-import { useCartContext } from "@contexts/CartProvider/context";
 
 export const ProductDetails = () => {
   const { product } = useProductDetails();
   const { redirectPage } = useRedirect();
   const { addProductCart } = useCart();
-  const { cartState } = useCartContext();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
