@@ -22,6 +22,7 @@ import { Input } from "@components";
 import { Icon } from "@assets/icons";
 import { useCart } from "@hooks/useCart";
 import { useProduct } from "@hooks/useProducts";
+import { LazyLoad } from "@libs/react-lazy-loading";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -50,10 +51,14 @@ export const Header = () => {
 
         <ListItemComponent {...ContainerItemListStyled}>
           <Link to="/gallery" style={{ width: "max-content" }}>
-            {<ImageComponent src={UserImg} />}
+            <LazyLoad>
+              <ImageComponent src={UserImg} />
+            </LazyLoad>
           </Link>
           <Link to="/cart" style={{ width: "max-content" }}>
-            {<ImageComponent src={BagImg} />}
+            <LazyLoad>
+              <ImageComponent src={BagImg} />
+            </LazyLoad>
           </Link>
           {cartState.list.length > 0 && (
             <TextComponent

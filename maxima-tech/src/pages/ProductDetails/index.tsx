@@ -24,6 +24,7 @@ import {
 import { BreadcrumbItem } from "@chakra-ui/react";
 import { useRedirect } from "@hooks/useRedirect";
 import { useCart } from "@hooks/useCart";
+import { LazyLoad } from "@libs/react-lazy-loading";
 
 export const ProductDetails = () => {
   const { product } = useProductDetails();
@@ -42,11 +43,13 @@ export const ProductDetails = () => {
             <BreadcrumbLinkComponent>{product.name}</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        <ImageComponent
-          src={product.image}
-          alt={product.description}
-          {...ImageProductStyled}
-        />
+        <LazyLoad>
+          <ImageComponent
+            src={product.image}
+            alt={product.description}
+            {...ImageProductStyled}
+          />
+        </LazyLoad>
       </FlexComponent>
 
       <FlexComponent {...ContainerInfoStyled}>
