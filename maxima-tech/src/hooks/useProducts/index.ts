@@ -3,17 +3,13 @@ import { useQuery } from "@libs/reactQuery";
 import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
 import { CATEGORY_LIST, ELEMENT_PER_PAGE } from "@constants/Products";
-import { useNavigate } from "react-router-dom";
 
 export const useProduct = () => {
-  const navigation = useNavigate();
   const [countPage, setCountPage] = useState({ rangeMin: 0, rangeMax: 6 });
   const [orderSelected, setOrderSelected] = useState<string>("");
   const [categorySelected, setCategorySelected] = useState<string>(
     CATEGORY_LIST[0]
   );
-  const cartProducts: Array<IProduct> =
-    JSON.parse(localStorage.getItem("@MaximaTech:products") as any) ?? [];
 
   const handlePagination = (rangeMin: number, rangeMax: number) => {
     setCountPage({ rangeMin, rangeMax });
@@ -46,45 +42,6 @@ export const useProduct = () => {
     return products.filter((item: IProduct) =>
       item.category.includes(categorySelected)
     );
-  };
-
-  const verifyIfComponentHasAlreadyBeenAdded = (product: IProduct) => {
-    return cartProducts.some((item) => item.id === product.id);
-  };
-
-  const saveLocalStorage = (products: Array<IProduct>) => {
-    localStorage.setItem("@MaximaTech:products", JSON.stringify(products));
-  };
-
-  const addProductCart = (product: IProduct) => {
-    if (!verifyIfComponentHasAlreadyBeenAdded(product)) {
-      cartProducts.push({ ...product, quantity: 1 });
-      saveLocalStorage(cartProducts);
-    }
-  };
-
-  const updateQuantityProduct = (product: IProduct, quantity: number) => {
-    const result = cartProducts.map((item) => {
-      if (item.id === product.id) {
-        product.quantity = Number(quantity);
-      }
-
-      return product;
-    });
-
-    saveLocalStorage(result);
-  };
-
-  const removeProductCart = (product: IProduct) => {
-    cartProducts.splice(
-      cartProducts.findIndex((item) => item.id === product.id),
-      1
-    );
-    saveLocalStorage(cartProducts);
-  };
-
-  const redirectPage = (path: string) => {
-    navigation(`/${path}`);
   };
 
   const filterProductsByOrder = (products: Array<IProduct>) => {
@@ -127,10 +84,5 @@ export const useProduct = () => {
     quantityProducts,
     handleOrder,
     orderSelected,
-    addProductCart,
-    removeProductCart,
-    cartProducts,
-    updateQuantityProduct,
-    redirectPage,
   };
 };

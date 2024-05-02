@@ -22,11 +22,15 @@ import {
   PriceStyled,
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
-import { useProduct } from "@hooks/useProducts";
+import { useRedirect } from "@hooks/useRedirect";
+import { useCart } from "@hooks/useCart";
+import { useCartContext } from "@contexts/CartProvider/context";
 
 export const ProductDetails = () => {
   const { product } = useProductDetails();
-  const { addProductCart, redirectPage } = useProduct();
+  const { redirectPage } = useRedirect();
+  const { addProductCart } = useCart();
+  const { cartState } = useCartContext();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>

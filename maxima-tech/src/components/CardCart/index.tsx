@@ -17,17 +17,16 @@ import {
   RemoveProductStyled,
   SelectQuantityStyled,
 } from "./styles";
-import ImgTrash from "@assets/img/trash.svg";
-import { useProduct } from "@hooks/useProducts";
 import { theme } from "@styles";
 import { Icon } from "@assets/icons";
+import { useCart } from "@hooks/useCart";
 
 interface ICardCart {
   product: IProduct;
 }
 
 export const CardCart = ({ product }: ICardCart) => {
-  const { updateQuantityProduct, removeProductCart } = useProduct();
+  const { updateQuantityProduct, removeProductCart } = useCart();
 
   return (
     <FlexComponent as="li" {...CardStyled}>
@@ -62,7 +61,7 @@ export const CardCart = ({ product }: ICardCart) => {
               onChange={(e: any) =>
                 updateQuantityProduct(product, e.target.value)
               }
-              defaultValue="1"
+              value={product.quantity}
               {...SelectQuantityStyled}
             >
               {Array(10)

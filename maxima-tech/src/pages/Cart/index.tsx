@@ -2,31 +2,22 @@ import {
   BreadcrumbComponent,
   BreadcrumbItemComponent,
   BreadcrumbLinkComponent,
-  ButtonComponent,
   FlexComponent,
-  HeadingComponent,
-  ImageComponent,
-  TextComponent,
 } from "@libs/chakra";
-import { useProductDetails } from "./hooks";
 import {
   BreadcrunberStyled,
   ContainerImage,
   ContainerInfoStyled,
   ContainerProductStyled,
-  DescriptionContentStyled,
-  DescriptionStyled,
-  DetailsStyled,
-  ImageProductStyled,
-  NameStyled,
-  PriceStyled,
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
-import { useProduct } from "@hooks/useProducts";
 import { CardCart } from "@components";
+import { useRedirect } from "@hooks/useRedirect";
+import { useCart } from "@hooks/useCart";
 
 export const Cart = () => {
-  const { cartProducts, redirectPage } = useProduct();
+  const { redirectPage } = useRedirect();
+  const { cartState } = useCart();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
@@ -40,7 +31,7 @@ export const Cart = () => {
             <BreadcrumbLinkComponent>Carrinho</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        {cartProducts.map((item) => (
+        {cartState.list.map((item) => (
           <CardCart key={crypto.randomUUID()} product={item} />
         ))}
       </FlexComponent>
