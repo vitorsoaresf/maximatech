@@ -14,12 +14,12 @@ export const ContainerImage: StyleComponents = {
   flexDirection: "column",
 };
 
-export const ContainerInfoStyled: StyleComponents = {
+export const BreadcrunberStyled: StyleComponents = {
+  padding: "10px",
+};
+
+export const ContainerAmountValueStyled: StyleComponents = {
   flexDirection: "column",
   justifyContent: "space-between",
   maxHeight: "100%",
-};
-
-export const BreadcrunberStyled: StyleComponents = {
-  padding: "10px",
 };

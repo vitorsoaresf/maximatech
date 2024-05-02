@@ -21,7 +21,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  useToast,
+  useToast,Divider
 } from "@chakra-ui/react";
 
 export {
@@ -47,5 +47,6 @@ export {
   Breadcrumb as BreadcrumbComponent,
   BreadcrumbItem as BreadcrumbItemComponent,
   BreadcrumbLink as BreadcrumbLinkComponent,
+  Divider as DividerComponent,
   useToast,
 };

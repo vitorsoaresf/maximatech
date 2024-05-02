@@ -2,12 +2,16 @@ import {
   BreadcrumbComponent,
   BreadcrumbItemComponent,
   BreadcrumbLinkComponent,
+  ButtonComponent,
+  DividerComponent,
   FlexComponent,
+  HeadingComponent,
+  TextComponent,
 } from "@libs/chakra";
 import {
   BreadcrunberStyled,
   ContainerImage,
-  ContainerInfoStyled,
+  ContainerAmountValueStyled,
   ContainerProductStyled,
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
@@ -36,7 +40,15 @@ export const Cart = () => {
         ))}
       </FlexComponent>
 
-      <FlexComponent {...ContainerInfoStyled}></FlexComponent>
+      <FlexComponent {...ContainerAmountValueStyled}>
+        <HeadingComponent>RESUMO</HeadingComponent>
+        <TextComponent>Subtotal de produtos</TextComponent>
+        <TextComponent>Entrega</TextComponent>
+        <DividerComponent />
+        <TextComponent>Total</TextComponent>
+        <ButtonComponent>FINALIZAR COMPRA</ButtonComponent>
+        <ButtonComponent>LIMPAR CARRINHO</ButtonComponent>
+      </FlexComponent>
     </FlexComponent>
   );
 };
