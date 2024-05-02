@@ -1,5 +1,6 @@
 import {
   FlexComponent,
+  HeadingComponent,
   ImageComponent,
   SelectComponent,
   TextComponent,
@@ -10,6 +11,7 @@ import { IProduct } from "@interfaces/components";
 import {
   ButtonsFilterStyled,
   ContainerImageMainStyled,
+  ContainerNotFoundProducts,
   HomeStyled,
   ImageMainStyled,
   OrderElementsStyled,
@@ -93,10 +95,15 @@ export const Home = () => {
                 <CardProduct key={crypto.randomUUID()} product={item} />
               ))
           ) : (
-            <ImageComponent
-              src={ImgViewProducts}
-              alt="Não há produtos para serem visualizados"
-            />
+            <FlexComponent {...ContainerNotFoundProducts}>
+              <HeadingComponent>
+                Não foi possível encontrar nenhum produto.
+              </HeadingComponent>
+              <ImageComponent
+                src={ImgViewProducts}
+                alt="Não há produtos para serem visualizados"
+              />
+            </FlexComponent>
           )}
         </FlexComponent>
         {quantityProducts > 0 && (

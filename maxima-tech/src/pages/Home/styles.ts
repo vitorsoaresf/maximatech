@@ -49,3 +49,8 @@ export const ProductListStyled: StyleComponents = {
 export const PagingContainerStyled: StyleComponents = {
   gap: "12px",
 };
+
+export const ContainerNotFoundProducts: StyleComponents = {
+  flexDirection: "column",
+  gap: "24px",
+};
