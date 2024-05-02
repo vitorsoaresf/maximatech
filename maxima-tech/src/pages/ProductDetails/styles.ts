@@ -11,6 +11,7 @@ export const ContainerProductStyled: StyleComponents = {
 };
 
 export const ContainerImage: StyleComponents = {
+  padding: "0 20px",
   flexDirection: "column",
 };
 
@@ -23,6 +24,7 @@ export const ContainerInfoStyled: StyleComponents = {
   flexDirection: "column",
   justifyContent: "space-between",
   maxHeight: "100%",
+  padding: "0 20px",
 };
 
 export const DetailsStyled: StyleComponents = {

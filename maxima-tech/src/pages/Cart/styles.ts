@@ -8,6 +8,7 @@ export const ContainerProductStyled: StyleComponents = {
   gap: "150px",
   marginTop: theme.spacing.xxl,
   marginBottom: "200px",
+  padding: "0 20px",
 };
 
 export const ContainerImageWithoutStyled: StyleComponents = {
