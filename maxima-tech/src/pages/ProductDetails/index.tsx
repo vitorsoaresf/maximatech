@@ -43,13 +43,12 @@ export const ProductDetails = () => {
             <BreadcrumbLinkComponent>{product.name}</BreadcrumbLinkComponent>
           </BreadcrumbItem>
         </BreadcrumbComponent>
-        <LazyLoad>
-          <ImageComponent
-            src={product.image}
-            alt={product.description}
-            {...ImageProductStyled}
-          />
-        </LazyLoad>
+        <ImageComponent
+          src={product.image}
+          alt={product.description}
+          loading="lazy"
+          {...ImageProductStyled}
+        />
       </FlexComponent>
 
       <FlexComponent {...ContainerInfoStyled}>

@@ -27,7 +27,6 @@ import { useRedirect } from "@hooks/useRedirect";
 import { useCart } from "@hooks/useCart";
 import { theme } from "@styles";
 import WithoutProducts from "@assets/img/without_products.svg";
-import { LazyLoad } from "@libs/react-lazy-loading";
 
 export const Cart = () => {
   const { redirectPage } = useRedirect();
@@ -58,13 +57,12 @@ export const Cart = () => {
             <CardCart key={crypto.randomUUID()} product={item} />
           ))
         ) : (
-          <LazyLoad>
-            <ImageComponent
-              src={WithoutProducts}
-              alt="Não há produtos no carrinho"
-              {...ContainerImageWithoutStyled}
-            />
-          </LazyLoad>
+          <ImageComponent
+            src={WithoutProducts}
+            alt="Não há produtos no carrinho"
+            loading="lazy"
+            {...ContainerImageWithoutStyled}
+          />
         )}
       </FlexComponent>
 

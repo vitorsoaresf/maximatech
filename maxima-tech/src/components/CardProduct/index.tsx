@@ -5,6 +5,7 @@ import {
   FlexComponent,
   HeadingComponent,
   ImageComponent,
+  SkeletonComponent,
   StackComponent,
   TextComponent,
 } from "@libs/chakra";
@@ -20,6 +21,7 @@ import {
 import { IconNewTab } from "@assets/icons/NewTab";
 import { useRedirect } from "@hooks/useRedirect";
 import { LazyLoad } from "@libs/react-lazy-loading";
+import { useState } from "react";
 
 interface ICardProduct {
   product: IProduct;
@@ -27,7 +29,7 @@ interface ICardProduct {
 
 export const CardProduct = ({ product }: ICardProduct) => {
   const { redirectPage } = useRedirect();
-
+  const [view, setView] = useState(false);
   return (
     <CardComponent
       as="li"
@@ -36,13 +38,12 @@ export const CardProduct = ({ product }: ICardProduct) => {
       onClick={() => redirectPage(`detailsproduct/${product.id}`)}
     >
       <CardBodyComponent>
-        <LazyLoad>
-          <ImageComponent
-            src={product.image}
-            alt={product.description}
-            {...ImageStyled}
-          />
-        </LazyLoad>
+        <ImageComponent
+          src={product.image}
+          alt={product.description}
+          loading="lazy"
+          {...ImageStyled}
+        />
 
         <StackComponent {...DescriptionCardStyled}>
           <HeadingComponent {...TitleCardStyled}>

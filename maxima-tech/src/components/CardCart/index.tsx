@@ -22,7 +22,6 @@ import {
 import { theme } from "@styles";
 import { Icon } from "@assets/icons";
 import { useCart } from "@hooks/useCart";
-import { LazyLoad } from "@libs/react-lazy-loading";
 
 interface ICardCart {
   product: IProduct;
@@ -35,13 +34,12 @@ export const CardCart = ({ product }: ICardCart) => {
     <FlexComponent as="li" {...CardStyled}>
       <FlexComponent {...ContainerCardStyled}>
         <FlexComponent {...ContainerImageStyled}>
-          <LazyLoad>
-            <ImageComponent
-              src={product.image}
-              alt={product.description}
-              {...CardImageStyled}
-            />
-          </LazyLoad>
+          <ImageComponent
+            src={product.image}
+            alt={product.description}
+            loading="lazy"
+            {...CardImageStyled}
+          />
         </FlexComponent>
         <FlexComponent {...CardDescriptionStyled}>
           <HeadingComponent {...DetailsProductStyled}>

@@ -33,7 +33,6 @@ import {
 } from "@contexts/ProductsProvider/actions";
 import { useEffect, useState } from "@libs/react";
 import ImgViewProducts from "@assets/img/eyes.svg";
-import { LazyLoad } from "@libs/react-lazy-loading";
 
 export const Home = () => {
   const [categorySelected, setCategorySelected] = useState("");
@@ -56,13 +55,12 @@ export const Home = () => {
   return (
     <>
       <FlexComponent {...ContainerImageMainStyled}>
-        <LazyLoad>
-          <ImageComponent
-            src={ImgMain}
-            alt="ecommerce de produtos"
-            {...ImageMainStyled}
-          />
-        </LazyLoad>
+        <ImageComponent
+          src={ImgMain}
+          alt="ecommerce de produtos"
+          loading="lazy"
+          {...ImageMainStyled}
+        />
       </FlexComponent>
 
       <FlexComponent {...HomeStyled}>
@@ -110,12 +108,11 @@ export const Home = () => {
               <HeadingComponent>
                 Não foi possível encontrar nenhum produto.
               </HeadingComponent>
-              <LazyLoad>
-                <ImageComponent
-                  src={ImgViewProducts}
-                  alt="Não há produtos para serem visualizados"
-                />
-              </LazyLoad>
+              <ImageComponent
+                src={ImgViewProducts}
+                alt="Não há produtos para serem visualizados"
+                loading="lazy"
+              />
             </FlexComponent>
           )}
         </FlexComponent>
