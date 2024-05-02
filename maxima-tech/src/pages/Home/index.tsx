@@ -31,12 +31,13 @@ import {
   setProductList,
   setProductListFiltered,
 } from "@contexts/ProductsProvider/actions";
-import { useEffect } from "@libs/react";
+import { useEffect, useState } from "@libs/react";
 import ImgViewProducts from "@assets/img/eyes.svg";
 
 export const Home = () => {
+  const [categorySelected, setCategorySelected] = useState("");
+  const [pageSelected, setPageSelected] = useState(0);
   const { productState, productDispatch } = useProductContext();
-
   const {
     productList,
     countPage,
@@ -60,16 +61,22 @@ export const Home = () => {
           {...ImageMainStyled}
         />
       </FlexComponent>
+
       <FlexComponent {...HomeStyled}>
         <FlexComponent as="ul" {...ButtonsFilterStyled}>
           {CATEGORY_LIST.map((category) => (
             <ButtonFilterProduct
               key={crypto.randomUUID()}
               label={category || "Todas as categorias"}
-              onClick={() => filterProductsByCategory(category)}
+              onClick={() => {
+                setCategorySelected(category);
+                filterProductsByCategory(category);
+              }}
+              active={category === categorySelected}
             />
           ))}
         </FlexComponent>
+
         <FlexComponent {...OrderElementsStyled}>
           <TextComponent>
             {productState.listFiltered.length} Produtos
@@ -87,6 +94,7 @@ export const Home = () => {
             ))}
           </SelectComponent>
         </FlexComponent>
+
         <FlexComponent as="ul" {...ProductListStyled}>
           {productState.listFiltered.length > 0 ? (
             productState.listFiltered
@@ -106,31 +114,36 @@ export const Home = () => {
             </FlexComponent>
           )}
         </FlexComponent>
+
         {quantityProducts > 0 && (
           <FlexComponent {...PagingContainerStyled}>
             {new Array(quantityProducts).fill("").map((_, index: number) => (
               <Paging
                 key={crypto.randomUUID()}
                 label={"" + (index + 1)}
-                onClick={() =>
+                active={pageSelected === index + 1}
+                onClick={() => {
+                  setPageSelected(index + 1);
                   handlePagination(
                     (index + 1) * ELEMENT_PER_PAGE - ELEMENT_PER_PAGE,
                     (index + 1) * ELEMENT_PER_PAGE
-                  )
-                }
+                  );
+                }}
               />
             ))}
             <Paging
               key={crypto.randomUUID()}
               label=">"
-              onClick={() =>
+              onClick={() => {
+                setPageSelected(quantityProducts);
+
                 handlePagination(
                   quantityProducts +
                     productState.listFiltered.length -
                     ELEMENT_PER_PAGE,
                   quantityProducts + productState.listFiltered.length
-                )
-              }
+                );
+              }}
             />
           </FlexComponent>
         )}
