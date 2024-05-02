@@ -20,8 +20,6 @@ import {
 } from "./styles";
 import { IconNewTab } from "@assets/icons/NewTab";
 import { useRedirect } from "@hooks/useRedirect";
-import { LazyLoad } from "@libs/react-lazy-loading";
-import { useState } from "react";
 
 interface ICardProduct {
   product: IProduct;
@@ -29,7 +27,7 @@ interface ICardProduct {
 
 export const CardProduct = ({ product }: ICardProduct) => {
   const { redirectPage } = useRedirect();
-  const [view, setView] = useState(false);
+
   return (
     <CardComponent
       as="li"
