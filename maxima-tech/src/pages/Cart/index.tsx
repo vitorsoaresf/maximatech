@@ -10,14 +10,20 @@ import {
 } from "@libs/chakra";
 import {
   BreadcrunberStyled,
-  ContainerImage,
-  ContainerAmountValueStyled,
+  ContainerImageStyled,
+  ContainerAmountStyled,
   ContainerProductStyled,
+  ContainerTitleStyled,
+  ContainerValueStyled,
+  ContainerTotalStyled,
+  ContainerButtonBuyProductsStyled,
+  ContainerButtonClearCartStyled,
 } from "./styles";
 import { BreadcrumbItem } from "@chakra-ui/react";
 import { CardCart } from "@components";
 import { useRedirect } from "@hooks/useRedirect";
 import { useCart } from "@hooks/useCart";
+import { theme } from "@styles";
 
 export const Cart = () => {
   const { redirectPage } = useRedirect();
@@ -25,7 +31,7 @@ export const Cart = () => {
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
-      <FlexComponent {...ContainerImage}>
+      <FlexComponent {...ContainerImageStyled}>
         <BreadcrumbComponent {...BreadcrunberStyled}>
           <BreadcrumbItemComponent onClick={() => redirectPage("")}>
             <BreadcrumbLinkComponent>Home</BreadcrumbLinkComponent>
@@ -40,16 +46,40 @@ export const Cart = () => {
         ))}
       </FlexComponent>
 
-      <FlexComponent {...ContainerAmountValueStyled}>
-        <HeadingComponent>RESUMO</HeadingComponent>
-        <TextComponent>
-          Subtotal de produtos R${amountPriceBuySubtotal},00
+      <FlexComponent {...ContainerAmountStyled}>
+        <HeadingComponent {...ContainerTitleStyled}>RESUMO</HeadingComponent>
+        <TextComponent {...ContainerValueStyled}>
+          Subtotal de produtos{" "}
+          <TextComponent>R$ {amountPriceBuySubtotal},00</TextComponent>
         </TextComponent>
-        <TextComponent>Entrega R$ 40,00</TextComponent>
-        <DividerComponent />
-        <TextComponent>Total R$ {amountTotal},00</TextComponent>
-        <ButtonComponent>FINALIZAR COMPRA</ButtonComponent>
-        <ButtonComponent>LIMPAR CARRINHO</ButtonComponent>
+        <TextComponent {...ContainerValueStyled}>
+          Entrega <TextComponent>R$ 40,00</TextComponent>
+        </TextComponent>
+        <DividerComponent marginBottom="12px" />
+        <TextComponent {...ContainerTotalStyled}>
+          Total R$ <TextComponent>{amountTotal},00</TextComponent>
+        </TextComponent>
+
+        <ButtonComponent
+          _hover={{
+            backgroundColor: theme.palette.white,
+            color: theme.palette.blue["550"],
+            border: `1px solid ${theme.palette.blue["550"]}`,
+          }}
+          {...ContainerButtonBuyProductsStyled}
+        >
+          FINALIZAR COMPRA
+        </ButtonComponent>
+        <ButtonComponent
+          _hover={{
+            backgroundColor: theme.palette.white,
+            color: theme.palette.red["550"],
+            border: `1px solid ${theme.palette.red["550"]}`,
+          }}
+          {...ContainerButtonClearCartStyled}
+        >
+          LIMPAR CARRINHO
+        </ButtonComponent>
       </FlexComponent>
     </FlexComponent>
   );
