@@ -2,8 +2,13 @@ import { ProductService } from "@services/Products";
 import { useQuery } from "@libs/reactQuery";
 import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
-import { CATEGORY_LIST, ELEMENT_PER_PAGE } from "@constants/Products";
-import { setProductList } from "@contexts/ProductsProvider/actions";
+import { ELEMENT_PER_PAGE } from "@constants/Products";
+import {
+  setProductList,
+  setCategory,
+  setOrder,
+  setProductListFiltered,
+} from "@contexts/ProductsProvider/actions";
 import { useProductContext } from "@contexts/ProductsProvider/context";
 
 export const useProduct = () => {
@@ -18,7 +23,7 @@ export const useProduct = () => {
     const response = await ProductService.loadProducts();
 
     if (response.ok) {
-      setProductList(productDispatch, await response.json());
+      return response.json();
     }
     throw new Error();
   };
@@ -31,17 +36,19 @@ export const useProduct = () => {
   });
 
   const filterProductsByCategory = (category: string) => {
-    setProductList(
+    setProductListFiltered(
       productDispatch,
       productState.list.filter((item: IProduct) =>
         item.category.includes(category)
       )
     );
+    setOrder(productDispatch, "");
   };
 
   const filterProductsByOrder = (order: string) => {
-    const copyArray = structuredClone(productState.list);
+    const copyArray = structuredClone(productState.listFiltered);
     let result: any = [];
+    setOrder(productDispatch, order);
 
     if (order === "name") {
       result = copyArray.sort((current: any, next: any) =>
@@ -55,11 +62,11 @@ export const useProduct = () => {
       result = copyArray;
     }
 
-    setProductList(productDispatch, result);
+    setProductListFiltered(productDispatch, result);
   };
 
   const quantityProducts = Number(
-    (productState.list.length / ELEMENT_PER_PAGE).toFixed()
+    (productState.listFiltered.length / ELEMENT_PER_PAGE).toFixed()
   );
 
   return {
@@ -68,10 +75,6 @@ export const useProduct = () => {
     handlePagination,
     filterProductsByCategory,
     filterProductsByOrder,
-    // handleCategory,
-    // categorySelected,
     quantityProducts,
-    // handleOrder,
-    // orderSelected,
   };
 };

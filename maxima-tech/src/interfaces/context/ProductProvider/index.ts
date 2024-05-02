@@ -4,6 +4,9 @@ import { Dispatch } from "react";
 
 export interface IProductState {
   list: Array<IProduct>;
+  listFiltered: Array<IProduct>;
+  category: string;
+  order: string;
 }
 
 export interface IIProductAction {

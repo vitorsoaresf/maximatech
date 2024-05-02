@@ -11,6 +11,21 @@ export const reducer = (state: IProductState, action: IIProductAction) => {
         ...state,
         list: action.payload,
       };
+    case EProducts.SET_PRODUCTS_FILTERED:
+      return {
+        ...state,
+        listFiltered: action.payload,
+      };
+    case EProducts.SET_CATEGORY:
+      return {
+        ...state,
+        category: action.payload,
+      };
+    case EProducts.SET_ORDER:
+      return {
+        ...state,
+        order: action.payload,
+      };
     default:
       return { ...state };
   }

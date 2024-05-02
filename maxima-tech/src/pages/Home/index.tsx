@@ -25,7 +25,10 @@ import {
 import { ButtonFilterProduct } from "@components";
 import ImgMain from "@assets/img/cover.svg";
 import { useProductContext } from "@contexts/ProductsProvider/context";
-import { setProductList } from "@contexts/ProductsProvider/actions";
+import {
+  setProductList,
+  setProductListFiltered,
+} from "@contexts/ProductsProvider/actions";
 import { useEffect } from "@libs/react";
 
 export const Home = () => {
@@ -42,7 +45,8 @@ export const Home = () => {
 
   useEffect(() => {
     setProductList(productDispatch, productList.data);
-  }, []);
+    setProductListFiltered(productDispatch, productList.data);
+  }, [productList.data]);
 
   return (
     <>
@@ -64,11 +68,13 @@ export const Home = () => {
           ))}
         </FlexComponent>
         <FlexComponent {...OrderElementsStyled}>
-          <TextComponent>{productState.list.length} Produtos</TextComponent>
+          <TextComponent>
+            {productState.listFiltered.length} Produtos
+          </TextComponent>
           <SelectComponent
             placeholder="(Todos)"
             onChange={(e: any) => filterProductsByOrder(e.target.value)}
-            // value={orderSelected}
+            value={productState.order}
             {...SelectElementsStyled}
           >
             {ORDER_LIST.map((item: any) => (
@@ -79,7 +85,7 @@ export const Home = () => {
           </SelectComponent>
         </FlexComponent>
         <FlexComponent as="ul" {...ProductListStyled}>
-          {productState.list
+          {productState.listFiltered
             .slice(countPage.rangeMin, countPage.rangeMax)
             .map((item: IProduct) => (
               <CardProduct key={crypto.randomUUID()} product={item} />
@@ -105,9 +111,9 @@ export const Home = () => {
               onClick={() =>
                 handlePagination(
                   quantityProducts +
-                    productState.list.length -
+                    productState.listFiltered.length -
                     ELEMENT_PER_PAGE,
-                  quantityProducts + productState.list.length
+                  quantityProducts + productState.listFiltered.length
                 )
               }
             />
