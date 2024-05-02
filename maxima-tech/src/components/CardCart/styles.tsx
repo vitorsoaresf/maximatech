@@ -58,7 +58,7 @@ export const DescriptionProductStyled: StyleComponents = {
 };
 
 export const SelectQuantityStyled: StyleComponents = {
-  maxWidth: "65px",
+  maxWidth: "70px",
   maxHeight: "40px",
 };
 

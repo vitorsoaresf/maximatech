@@ -21,7 +21,7 @@ import { useCart } from "@hooks/useCart";
 
 export const Cart = () => {
   const { redirectPage } = useRedirect();
-  const { cartState, amountPriceBuy } = useCart();
+  const { cartState, amountPriceBuySubtotal, amountTotal } = useCart();
 
   return (
     <FlexComponent as="section" {...ContainerProductStyled}>
@@ -42,10 +42,12 @@ export const Cart = () => {
 
       <FlexComponent {...ContainerAmountValueStyled}>
         <HeadingComponent>RESUMO</HeadingComponent>
-        <TextComponent>Subtotal de produtos {amountPriceBuy}</TextComponent>
-        <TextComponent>Entrega</TextComponent>
+        <TextComponent>
+          Subtotal de produtos R${amountPriceBuySubtotal},00
+        </TextComponent>
+        <TextComponent>Entrega R$ 40,00</TextComponent>
         <DividerComponent />
-        <TextComponent>Total</TextComponent>
+        <TextComponent>Total R$ {amountTotal},00</TextComponent>
         <ButtonComponent>FINALIZAR COMPRA</ButtonComponent>
         <ButtonComponent>LIMPAR CARRINHO</ButtonComponent>
       </FlexComponent>

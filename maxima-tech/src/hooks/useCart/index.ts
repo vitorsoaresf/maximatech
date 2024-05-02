@@ -2,6 +2,7 @@ import { useCartContext } from "@contexts/CartProvider/context";
 import { IProduct } from "@interfaces/components";
 import { setCartList } from "@contexts/CartProvider/actions";
 import { useToast } from "@libs/chakra";
+import { DELIVERY_CUST } from "@constants/Cart";
 
 export const useCart = () => {
   const { cartState, cartDispatch } = useCartContext();
@@ -91,13 +92,15 @@ export const useCart = () => {
     return result;
   };
 
-  const amountPriceBuy = calcAmountListProductsFromCart();
+  const amountPriceBuySubtotal = calcAmountListProductsFromCart();
+  const amountTotal = amountPriceBuySubtotal + DELIVERY_CUST;
 
   return {
     cartState,
     addProductCart,
     removeProductCart,
     updateQuantityProduct,
-    amountPriceBuy,
+    amountPriceBuySubtotal,
+    amountTotal,
   };
 };
