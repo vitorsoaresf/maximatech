@@ -18,7 +18,7 @@ import { Link, useNavigate } from "@libs/reactRouterDom";
 
 export const Footer = () => {
   const navigate = useNavigate();
-  const { handleCategory } = useProduct();
+  const { filterProductsByCategory } = useProduct();
 
   return (
     <FlexComponent
@@ -37,15 +37,21 @@ export const Footer = () => {
           <Link to="/">Home</Link>
         </ListItemComponent>
         <ListItemComponent
-          onClick={() => handleCategory("Tênis")}
+          onClick={() => filterProductsByCategory("Tênis")}
           {...ContainerItemListStyled}
         >
           <Link to="/">Tênis</Link>
         </ListItemComponent>
-        <ListItemComponent {...ContainerItemListStyled}>
+        <ListItemComponent
+          onClick={() => filterProductsByCategory("Camisetas")}
+          {...ContainerItemListStyled}
+        >
           <Link to="/">Camisetas</Link>
         </ListItemComponent>
-        <ListItemComponent {...ContainerItemListStyled}>
+        <ListItemComponent
+          onClick={() => filterProductsByCategory("Calças")}
+          {...ContainerItemListStyled}
+        >
           <Link to="/">Calças</Link>
         </ListItemComponent>
       </UnorderedListComponent>
