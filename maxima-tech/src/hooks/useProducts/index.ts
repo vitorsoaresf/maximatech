@@ -65,6 +65,15 @@ export const useProduct = () => {
     setProductListFiltered(productDispatch, result);
   };
 
+  const filteByrTerm = (term: string) => {
+    setProductListFiltered(
+      productDispatch,
+      productState.list.filter((item: IProduct) =>
+        item.name.toLowerCase().includes(term.toLowerCase())
+      )
+    );
+  };
+
   const quantityProducts = Number(
     (productState.listFiltered.length / ELEMENT_PER_PAGE).toFixed()
   );
@@ -75,6 +84,7 @@ export const useProduct = () => {
     handlePagination,
     filterProductsByCategory,
     filterProductsByOrder,
+    filteByrTerm,
     quantityProducts,
   };
 };

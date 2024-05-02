@@ -10,7 +10,6 @@ import {
   QuantityProductsCartStyled,
 } from "./styles";
 import {
-  ButtonComponent,
   FlexComponent,
   HeadingComponent,
   ImageComponent,
@@ -22,10 +21,12 @@ import { Link, useNavigate } from "@libs/reactRouterDom";
 import { Input } from "@components";
 import { Icon } from "@assets/icons";
 import { useCart } from "@hooks/useCart";
+import { useProduct } from "@hooks/useProducts";
 
 export const Header = () => {
   const navigate = useNavigate();
   const { cartState } = useCart();
+  const { filteByrTerm } = useProduct();
 
   return (
     <FlexComponent as="nav" {...ContainerHeaderStyled}>
@@ -42,20 +43,8 @@ export const Header = () => {
       <UnorderedListComponent {...ContainerListStyled}>
         <Input
           placeholder="Quero comprar algo específico..."
-          onChange={(e) => console.log(e.target.value)}
-          actionBtRightPosition={
-            <ButtonComponent
-              bg="transparent"
-              _hover={{
-                backgroundColor: "transparent",
-                color: "blue",
-              }}
-              // onClick={seePassword}
-              // {...ContainerButtonPasswordStyled}
-            >
-              {Icon["search"]}
-            </ButtonComponent>
-          }
+          onChange={(e) => filteByrTerm(e.target.value)}
+          actionBtRightPosition={Icon["search"]}
           width={["310px", "310px", "310px", "350px"]}
         />
 

@@ -30,6 +30,7 @@ import {
   setProductListFiltered,
 } from "@contexts/ProductsProvider/actions";
 import { useEffect } from "@libs/react";
+import ImgViewProducts from "@assets/img/eyes.svg";
 
 export const Home = () => {
   const { productState, productDispatch } = useProductContext();
@@ -85,13 +86,20 @@ export const Home = () => {
           </SelectComponent>
         </FlexComponent>
         <FlexComponent as="ul" {...ProductListStyled}>
-          {productState.listFiltered
-            .slice(countPage.rangeMin, countPage.rangeMax)
-            .map((item: IProduct) => (
-              <CardProduct key={crypto.randomUUID()} product={item} />
-            ))}
+          {productState.listFiltered.length > 0 ? (
+            productState.listFiltered
+              .slice(countPage.rangeMin, countPage.rangeMax)
+              .map((item: IProduct) => (
+                <CardProduct key={crypto.randomUUID()} product={item} />
+              ))
+          ) : (
+            <ImageComponent
+              src={ImgViewProducts}
+              alt="Não há produtos para serem visualizados"
+            />
+          )}
         </FlexComponent>
-        {quantityProducts && (
+        {quantityProducts > 0 && (
           <FlexComponent {...PagingContainerStyled}>
             {new Array(quantityProducts).fill("").map((_, index: number) => (
               <Paging
