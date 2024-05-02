@@ -2,7 +2,7 @@ import { StyleComponents } from "@interfaces/components";
 import { theme } from "@styles";
 
 export const CardStyled: StyleComponents = {
-  margin: "5px",
+  margin: "16px 0",
   fontFamily: theme.typography.fonts.saira,
 };
 
@@ -13,6 +13,7 @@ export const ContainerCardStyled: StyleComponents = {
 export const ContainerImageStyled: StyleComponents = {
   width: "256px",
   height: "211px",
+  margin: ["0 auto", "0 auto", "0"],
 };
 
 export const CardImageStyled: StyleComponents = {
@@ -24,7 +25,7 @@ export const CardDescriptionStyled: StyleComponents = {
   flexDirection: "column",
   marginLeft: ["0", "0", theme.spacing.xl],
   marginTop: [theme.spacing.xl, theme.spacing.xl, "0"],
-  width: "429px",
+  width: ["300px", "429px"],
 };
 
 const FontSairaStyled = {
@@ -53,9 +54,20 @@ export const RemoveProductStyled: StyleComponents = {
 export const DescriptionProductStyled: StyleComponents = {
   fontSize: theme.typography.fontSize.sm,
   marginBottom: theme.spacing.xl,
+  display: "flex",
 };
 
 export const SelectQuantityStyled: StyleComponents = {
   maxWidth: "65px",
   maxHeight: "40px",
+};
+
+export const ContainerPriceQuantityStyled: StyleComponents = {
+  justifyContent: "space-between",
+  alignItems: "flex-end",
+};
+
+export const ContainerPriceStyled: StyleComponents = {
+  flexDirection: "column",
+  fontWeight: theme.typography.fontWeights.semibold,
 };

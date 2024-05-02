@@ -4,7 +4,7 @@ import { theme } from "@styles";
 
 export const ContainerFooterStyled: StyleComponents = {
   padding: "20px 20px",
-  backgroundColor: theme.palette.gray["100"],
+  backgroundColor: theme.palette.whiteAlpha["1000"],
   display: "flex",
   flexDirection: ["column", "column", "row"],
   fontFamily: theme.typography.fonts.poppins,

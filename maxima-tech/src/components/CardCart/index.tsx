@@ -12,6 +12,8 @@ import {
   CardStyled,
   ContainerCardStyled,
   ContainerImageStyled,
+  ContainerPriceQuantityStyled,
+  ContainerPriceStyled,
   DescriptionProductStyled,
   DetailsProductStyled,
   RemoveProductStyled,
@@ -56,7 +58,7 @@ export const CardCart = ({ product }: ICardCart) => {
             {product.description}
           </TextComponent>
 
-          <FlexComponent>
+          <FlexComponent {...ContainerPriceQuantityStyled}>
             <SelectComponent
               onChange={(e: any) =>
                 updateQuantityProduct(product, e.target.value)
@@ -72,6 +74,24 @@ export const CardCart = ({ product }: ICardCart) => {
                   </option>
                 ))}
             </SelectComponent>
+
+            <FlexComponent {...ContainerPriceStyled}>
+              <TextComponent
+                textDecoration={product.promotional_price && "line-through"}
+                {...(product.promotional_price && {
+                  textDecoration: "line-through",
+                  color: theme.palette.red["550"],
+                })}
+              >
+                R$ {(product?.quantity as number) * product.price}
+              </TextComponent>
+
+              {product.promotional_price && (
+                <TextComponent>
+                  R$ {(product?.quantity as number) * product.promotional_price}
+                </TextComponent>
+              )}
+            </FlexComponent>
           </FlexComponent>
         </FlexComponent>
       </FlexComponent>

@@ -2,7 +2,6 @@ import { StyleComponents } from "@interfaces/components";
 import { theme } from "@styles";
 
 export const ContainerProductStyled: StyleComponents = {
-  padding: "0 100px",
   justifyContent: "center",
   alignItems: ["center", "center", "center", "unset"],
   flexDirection: ["column", "column", "column", "row"],
