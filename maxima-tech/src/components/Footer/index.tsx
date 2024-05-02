@@ -1,3 +1,4 @@
+import { useProduct } from "@hooks/useProducts";
 import {
   ContainerFooterStyled,
   ContainerHeadingStyled,
@@ -17,6 +18,7 @@ import { Link, useNavigate } from "@libs/reactRouterDom";
 
 export const Footer = () => {
   const navigate = useNavigate();
+  const { handleCategory } = useProduct();
 
   return (
     <FlexComponent
@@ -34,7 +36,10 @@ export const Footer = () => {
         <ListItemComponent {...ContainerItemListStyled}>
           <Link to="/">Home</Link>
         </ListItemComponent>
-        <ListItemComponent {...ContainerItemListStyled}>
+        <ListItemComponent
+          onClick={() => handleCategory("Tênis")}
+          {...ContainerItemListStyled}
+        >
           <Link to="/">Tênis</Link>
         </ListItemComponent>
         <ListItemComponent {...ContainerItemListStyled}>

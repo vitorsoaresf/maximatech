@@ -3,31 +3,22 @@ import { useQuery } from "@libs/reactQuery";
 import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
 import { CATEGORY_LIST, ELEMENT_PER_PAGE } from "@constants/Products";
+import { setProductList } from "@contexts/ProductsProvider/actions";
+import { useProductContext } from "@contexts/ProductsProvider/context";
 
 export const useProduct = () => {
   const [countPage, setCountPage] = useState({ rangeMin: 0, rangeMax: 6 });
-  const [orderSelected, setOrderSelected] = useState<string>("");
-  const [categorySelected, setCategorySelected] = useState<string>(
-    CATEGORY_LIST[0]
-  );
+  const { productState, productDispatch } = useProductContext();
 
   const handlePagination = (rangeMin: number, rangeMax: number) => {
     setCountPage({ rangeMin, rangeMax });
-  };
-
-  const handleCategory = (category: string) => {
-    setCategorySelected(category);
-  };
-
-  const handleOrder = (order: string) => {
-    setOrderSelected(order);
   };
 
   const loadProductsPage = async () => {
     const response = await ProductService.loadProducts();
 
     if (response.ok) {
-      return response.json();
+      setProductList(productDispatch, await response.json());
     }
     throw new Error();
   };
@@ -36,53 +27,51 @@ export const useProduct = () => {
     queryKey: ["products"],
     queryFn: loadProductsPage,
     initialData: [],
+    retry: false,
   });
 
-  const filterProductsByCategory = (products: Array<IProduct>) => {
-    return products.filter((item: IProduct) =>
-      item.category.includes(categorySelected)
+  const filterProductsByCategory = (category: string) => {
+    setProductList(
+      productDispatch,
+      productState.list.filter((item: IProduct) =>
+        item.category.includes(category)
+      )
     );
   };
 
-  const filterProductsByOrder = (products: Array<IProduct>) => {
-    const copyArray = structuredClone(products);
+  const filterProductsByOrder = (order: string) => {
+    const copyArray = structuredClone(productState.list);
     let result: any = [];
 
-    if (orderSelected === "name") {
+    if (order === "name") {
       result = copyArray.sort((current: any, next: any) =>
-        current[orderSelected] < next[orderSelected]
-          ? -1
-          : current[orderSelected] > next[orderSelected]
-          ? 1
-          : 0
+        current[order] < next[order] ? -1 : current[order] > next[order] ? 1 : 0
       );
-    } else if (orderSelected === "price") {
+    } else if (order === "price") {
       result = copyArray.sort(
-        (current: any, next: any) =>
-          current[orderSelected] - next[orderSelected]
+        (current: any, next: any) => current[order] - next[order]
       );
     } else {
       result = copyArray;
     }
 
-    return result;
+    setProductList(productDispatch, result);
   };
 
-  const productsFiltered = filterProductsByCategory(productList.data);
-  const products = filterProductsByOrder(productsFiltered);
-
   const quantityProducts = Number(
-    (products.length / ELEMENT_PER_PAGE).toFixed()
+    (productState.list.length / ELEMENT_PER_PAGE).toFixed()
   );
 
   return {
-    products,
+    productList,
     countPage,
     handlePagination,
-    handleCategory,
-    categorySelected,
+    filterProductsByCategory,
+    filterProductsByOrder,
+    // handleCategory,
+    // categorySelected,
     quantityProducts,
-    handleOrder,
-    orderSelected,
+    // handleOrder,
+    // orderSelected,
   };
 };

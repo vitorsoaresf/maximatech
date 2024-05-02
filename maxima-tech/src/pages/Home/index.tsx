@@ -24,17 +24,25 @@ import {
 } from "@constants/Products";
 import { ButtonFilterProduct } from "@components";
 import ImgMain from "@assets/img/cover.svg";
+import { useProductContext } from "@contexts/ProductsProvider/context";
+import { setProductList } from "@contexts/ProductsProvider/actions";
+import { useEffect } from "@libs/react";
 
 export const Home = () => {
+  const { productState, productDispatch } = useProductContext();
+
   const {
-    products,
+    productList,
     countPage,
     handlePagination,
-    handleCategory,
-    handleOrder,
     quantityProducts,
-    orderSelected,
+    filterProductsByCategory,
+    filterProductsByOrder,
   } = useProduct();
+
+  useEffect(() => {
+    setProductList(productDispatch, productList.data);
+  }, []);
 
   return (
     <>
@@ -51,16 +59,16 @@ export const Home = () => {
             <ButtonFilterProduct
               key={crypto.randomUUID()}
               label={category || "Todas as categorias"}
-              onClick={() => handleCategory(category)}
+              onClick={() => filterProductsByCategory(category)}
             />
           ))}
         </FlexComponent>
         <FlexComponent {...OrderElementsStyled}>
-          <TextComponent>{products.length} Produtos</TextComponent>
+          <TextComponent>{productState.list.length} Produtos</TextComponent>
           <SelectComponent
             placeholder="(Todos)"
-            onChange={(e: any) => handleOrder(e.target.value)}
-            value={orderSelected}
+            onChange={(e: any) => filterProductsByOrder(e.target.value)}
+            // value={orderSelected}
             {...SelectElementsStyled}
           >
             {ORDER_LIST.map((item: any) => (
@@ -71,7 +79,7 @@ export const Home = () => {
           </SelectComponent>
         </FlexComponent>
         <FlexComponent as="ul" {...ProductListStyled}>
-          {products
+          {productState.list
             .slice(countPage.rangeMin, countPage.rangeMax)
             .map((item: IProduct) => (
               <CardProduct key={crypto.randomUUID()} product={item} />
@@ -96,8 +104,10 @@ export const Home = () => {
               label=">"
               onClick={() =>
                 handlePagination(
-                  quantityProducts + products.length - ELEMENT_PER_PAGE,
-                  quantityProducts + products.length
+                  quantityProducts +
+                    productState.list.length -
+                    ELEMENT_PER_PAGE,
+                  quantityProducts + productState.list.length
                 )
               }
             />

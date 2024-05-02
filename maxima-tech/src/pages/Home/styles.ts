@@ -19,7 +19,7 @@ export const HomeStyled: StyleComponents = {
 
 export const ButtonsFilterStyled: StyleComponents = {
   display: "flex",
-  flexDirection: ["column", "column", "column", "row"],
+  flexDirection: ["column", "column", "column", "row", "row"],
   justifyContent: ["center", "center", "center", "center", "space-between"],
   alignItems: "center",
   width: "100%",
@@ -35,15 +35,14 @@ export const OrderElementsStyled: StyleComponents = {
 };
 
 export const SelectElementsStyled: StyleComponents = {
-  maxWidth: ["200px", "200px", "311.38px"],
+  maxWidth: "311.38px",
   maxHeight: "50px",
 };
 
 export const ProductListStyled: StyleComponents = {
-  justifyContent: ["center", "center", "center", "space-between", "start"],
-  alignItems: "start",
+  justifyContent: "center",
   flexWrap: "wrap",
-  gap: "20px",
+  gap: theme.spacing.lg,
   marginBottom: "40px",
 };
 
