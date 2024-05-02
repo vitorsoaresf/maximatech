@@ -77,10 +77,27 @@ export const useCart = () => {
     saveLocalStorage(result);
   };
 
+  const calcAmountListProductsFromCart = () => {
+    const result = cartState.list.reduce((acc, item: IProduct) => {
+      let amount: number = acc;
+
+      amount += item?.promotional_price
+        ? item?.promotional_price * (item?.quantity ?? 1)
+        : item.price * (item?.quantity ?? 1);
+
+      return amount;
+    }, 0);
+
+    return result;
+  };
+
+  const amountPriceBuy = calcAmountListProductsFromCart();
+
   return {
     cartState,
     addProductCart,
     removeProductCart,
     updateQuantityProduct,
+    amountPriceBuy,
   };
 };
