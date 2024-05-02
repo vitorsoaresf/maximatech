@@ -4,8 +4,6 @@ import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
 import { ELEMENT_PER_PAGE } from "@constants/Products";
 import {
-  setProductList,
-  setCategory,
   setOrder,
   setProductListFiltered,
 } from "@contexts/ProductsProvider/actions";

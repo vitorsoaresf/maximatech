@@ -24,7 +24,6 @@ import {
 import { BreadcrumbItem } from "@chakra-ui/react";
 import { useRedirect } from "@hooks/useRedirect";
 import { useCart } from "@hooks/useCart";
-import { LazyLoad } from "@libs/react-lazy-loading";
 
 export const ProductDetails = () => {
   const { product } = useProductDetails();

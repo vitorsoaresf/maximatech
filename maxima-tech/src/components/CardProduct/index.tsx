@@ -5,7 +5,6 @@ import {
   FlexComponent,
   HeadingComponent,
   ImageComponent,
-  SkeletonComponent,
   StackComponent,
   TextComponent,
 } from "@libs/chakra";
