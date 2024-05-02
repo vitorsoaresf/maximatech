@@ -35,7 +35,7 @@ export const OrderElementsStyled: StyleComponents = {
 };
 
 export const SelectElementsStyled: StyleComponents = {
-  maxWidth: "311.38px",
+  maxWidth: ["200px", "200px", "311.38px"],
   maxHeight: "50px",
 };
 
