@@ -18,28 +18,32 @@ import {
   TitleCardStyled,
 } from "./styles";
 import { IconNewTab } from "@assets/icons/NewTab";
-import { useCardProduct } from "./hooks";
+import { useRedirect } from "@hooks/useRedirect";
+import { LazyLoad } from "@libs/react-lazy-loading";
 
 interface ICardProduct {
   product: IProduct;
 }
 
 export const CardProduct = ({ product }: ICardProduct) => {
-  const { redirectRouteDetailsProduct } = useCardProduct();
+  const { redirectPage } = useRedirect();
 
   return (
     <CardComponent
       as="li"
       maxW="sm"
       {...CardStyled}
-      onClick={() => redirectRouteDetailsProduct(product)}
+      onClick={() => redirectPage(`detailsproduct/${product.id}`)}
     >
       <CardBodyComponent>
-        <ImageComponent
-          src={product.image}
-          alt={product.description}
-          {...ImageStyled}
-        />
+        <LazyLoad>
+          <ImageComponent
+            src={product.image}
+            alt={product.description}
+            {...ImageStyled}
+          />
+        </LazyLoad>
+
         <StackComponent {...DescriptionCardStyled}>
           <HeadingComponent {...TitleCardStyled}>
             {product.name}
