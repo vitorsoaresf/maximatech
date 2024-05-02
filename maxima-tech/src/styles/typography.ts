@@ -45,8 +45,11 @@ export const typography = {
     saira: "Saira, Verdana,Arial, Helvetica, sans-serif",
   },
   fontSize: {
-    xxs: "8px",
+    mono: "2px",
+    s: "4px",
+    xss: "6px",
     xs: "10px",
+    xxs: "8px",
     sm: "12px",
     md: "14px",
     lg: "16px",

@@ -7,6 +7,7 @@ import {
   ContainerListStyled,
   ContainerTitleInitialCharacterStyled,
   ContainerTitleWordStyled,
+  QuantityProductsCartStyled,
 } from "./styles";
 import {
   ButtonComponent,
@@ -20,9 +21,11 @@ import {
 import { Link, useNavigate } from "@libs/reactRouterDom";
 import { Input } from "@components";
 import { Icon } from "@assets/icons";
+import { useCart } from "@hooks/useCart";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { cartState } = useCart();
 
   return (
     <FlexComponent as="nav" {...ContainerHeaderStyled}>
@@ -63,6 +66,14 @@ export const Header = () => {
           <Link to="/cart" style={{ width: "max-content" }}>
             {<ImageComponent src={BagImg} />}
           </Link>
+          {cartState.list.length > 0 && (
+            <TextComponent
+              transform="translate3d(-22px, 10px, 10px)"
+              {...QuantityProductsCartStyled}
+            >
+              {cartState.list.length}
+            </TextComponent>
+          )}
         </ListItemComponent>
       </UnorderedListComponent>
     </FlexComponent>

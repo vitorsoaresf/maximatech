@@ -29,6 +29,14 @@ export const useCart = () => {
         duration: 4000,
         isClosable: true,
       });
+    } else {
+      toast({
+        position: "top",
+        title: "Produto já foi adicionado ao carrinho!",
+        status: "info",
+        duration: 4000,
+        isClosable: true,
+      });
     }
   };
 
