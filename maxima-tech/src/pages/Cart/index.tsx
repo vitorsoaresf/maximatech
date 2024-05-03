@@ -70,23 +70,30 @@ export const Cart = () => {
         <HeadingComponent {...ContainerTitleStyled}>RESUMO</HeadingComponent>
 
         <FlexComponent {...ContainerValueStyled}>
-          <TextComponent>Subtotal de produtos </TextComponent>
-          <TextComponent>R$ {amountPriceBuySubtotal},00</TextComponent>
+          <TextComponent>Subtotal de produtos</TextComponent>
+          <TextComponent data-test="subtotal-products">
+            R$ {amountPriceBuySubtotal ?? 0},00
+          </TextComponent>
         </FlexComponent>
 
         <FlexComponent {...ContainerValueStyled}>
           <TextComponent>Entrega</TextComponent>
-          <TextComponent>{hasProducts ? "R$ 40,00" : "R$ 0,00"}</TextComponent>
+          <TextComponent data-test="delivery-price">
+            {hasProducts ? "R$ 40,00" : "R$ 0,00"}
+          </TextComponent>
         </FlexComponent>
 
         <DividerComponent marginBottom="12px" />
         <FlexComponent {...ContainerTotalStyled}>
-          <TextComponent>Total R$</TextComponent>
-          <TextComponent>{amountTotal},00</TextComponent>
+          <TextComponent>Total </TextComponent>
+          <TextComponent data-test="total-price">
+            R$ {amountTotal ?? 0},00
+          </TextComponent>
         </FlexComponent>
 
         <ButtonComponent
           onClick={finalizePurchase}
+          data-test="bt-finalize-buy"
           isDisabled={cartState.list.length === 0}
           _hover={{
             backgroundColor: theme.palette.white,
@@ -99,6 +106,7 @@ export const Cart = () => {
         </ButtonComponent>
         <ButtonComponent
           onClick={clearCart}
+          data-test="bt-clear-cart"
           isDisabled={cartState.list.length === 0}
           _hover={{
             backgroundColor: theme.palette.white,

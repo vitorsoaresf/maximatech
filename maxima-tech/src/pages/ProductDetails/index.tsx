@@ -35,7 +35,9 @@ export const ProductDetails = () => {
       <FlexComponent {...ContainerImage}>
         <BreadcrumbComponent {...BreadcrunberStyled}>
           <BreadcrumbItemComponent onClick={() => redirectPage("")}>
-            <BreadcrumbLinkComponent>Home</BreadcrumbLinkComponent>
+            <BreadcrumbLinkComponent data-test="home-redirect-product-details">
+              Home
+            </BreadcrumbLinkComponent>
           </BreadcrumbItemComponent>
 
           <BreadcrumbItem isCurrentPage>
@@ -53,11 +55,12 @@ export const ProductDetails = () => {
       <FlexComponent {...ContainerInfoStyled}>
         <FlexComponent {...DetailsStyled}>
           <HeadingComponent {...NameStyled}>{product.name}</HeadingComponent>
-          <HeadingComponent {...PriceStyled}>
-            R$
+          <HeadingComponent data-test="price-product-details" {...PriceStyled}>
+            R${" "}
             {product.promotional_price
               ? product.promotional_price
               : product.price}
+            ,00
           </HeadingComponent>
 
           <HeadingComponent {...DescriptionStyled}>Descrição</HeadingComponent>
@@ -79,7 +82,10 @@ export const ProductDetails = () => {
             {product.description}
           </TextComponent>
         </FlexComponent>
-        <ButtonComponent onClick={() => addProductCart(product)}>
+        <ButtonComponent
+          data-test="add-cart"
+          onClick={() => addProductCart(product)}
+        >
           ADICIONAR AO CARRINHO
         </ButtonComponent>
       </FlexComponent>

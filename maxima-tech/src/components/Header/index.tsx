@@ -54,7 +54,11 @@ export const Header = () => {
           <Link to="/gallery" style={{ width: "max-content" }}>
             <ImageComponent src={UserImg} loading="lazy" />
           </Link>
-          <Link to="/cart" style={{ width: "max-content" }}>
+          <Link
+            to="/cart"
+            data-test="icon-cart-redirect"
+            style={{ width: "max-content" }}
+          >
             <ImageComponent src={BagImg} loading="lazy" />
           </Link>
           {cartState.list.length > 0 && (

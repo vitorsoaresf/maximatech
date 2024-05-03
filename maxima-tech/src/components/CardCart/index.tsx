@@ -42,7 +42,10 @@ export const CardCart = ({ product }: ICardCart) => {
           />
         </FlexComponent>
         <FlexComponent {...CardDescriptionStyled}>
-          <HeadingComponent {...DetailsProductStyled}>
+          <HeadingComponent
+            {...DetailsProductStyled}
+            data-test="name-product-cart"
+          >
             {product.name}
             <TextComponent
               _hover={{
@@ -65,12 +68,17 @@ export const CardCart = ({ product }: ICardCart) => {
                 updateQuantityProduct(product, e.target.value)
               }
               value={product.quantity}
+              data-test="quantity-selector"
               {...SelectQuantityStyled}
             >
               {Array(10)
                 .fill(0)
                 .map((_, index) => (
-                  <option key={crypto.randomUUID()} value={index + 1}>
+                  <option
+                    key={crypto.randomUUID()}
+                    // data-test={`quantity-products`}
+                    value={index + 1}
+                  >
                     {index + 1}
                   </option>
                 ))}
