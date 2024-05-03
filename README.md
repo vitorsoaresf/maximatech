@@ -69,10 +69,11 @@ Na tela do carrinho ao qual representa todos os produtos que o usuário possui i
 
 # <strong>Como executar o projeto?</strong>
 
-- Após baixar o projeto  instale o Git (https://git-scm.com/)
-- Depois de instalado, com o botão direito do mouse procure a opção 'Git Bash Here' e clique.
+- Após baixar o projeto instale o Git (https://git-scm.com/)
+- Depois que o Git foi instalado, entre nesse diretório  maximatech-main > maxima-tech e com o botão direito do mouse procure a opção 'Git Bash Here' e clique.
 - Será aberta uma CLI, e execute o comando <code>npm -i</code>
-- Finalizado as instalações rode o comando <code>npm run dev</code>, uma aba será aberta no browser com o aplicativo.
+- Finalizado as instalações rode o comando <code>npm run dev</code>.
+- Clique na URL  <strong>http://localhost:5173/</strong> segurando CTRL e veja o aplicativo.
 
 <br>
 <br>
