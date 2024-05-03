@@ -130,6 +130,6 @@ test.describe("Detalhes dos produtos", () => {
 
     const price = await page.locator('[data-test="total-price"]').textContent();
 
-    expect(price).toBe("R$ 120,00");
+    expect(price).toBe("R$ 160,00");
   });
 });
