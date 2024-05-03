@@ -2,6 +2,11 @@
 
 <br>
 
+Caso deseje visitar nossa aplicação, segue o link do deploy:
+https://maxima-tech-a1ab3prtl-vitorsoaresfs-projects.vercel.app/
+
+<br>
+
 <p>Esse projeto corresponde a um e-commerce de venda de produtos onde o usuario pode visualizar os produtos disponíveis na página home, onde pode estar visualizando mais detalhes ao clicar sobre o produto, logo visualizará informações como descrição e preço atual, podendo adicionar ao carrinho caso seja de seu interesse comprar o mesmo.
 
 Na tela do carrinho ao qual representa todos os produtos que o usuário possui interesse, é possível o usuário alterar a quantidade de produtos adicionados, limpar carrinho e finalizar sua compra. </p>
@@ -80,9 +85,10 @@ Na tela do carrinho ao qual representa todos os produtos que o usuário possui i
 
 # <strong>Como executar o testes E2E?</strong>
 
-- Após baixar o projeto instalar as dependências rode o comando <code>npm run dev</code>
-- Logo após rode o comando <code>npm run test</code>
+- Após baixar o projeto instalar as dependências rode o comando <code>npm run dev</code> na CLI do Git
+- Logo após abra outro terminal do Git e rode o comando <code>npm run test</code>
 - Será aberto uma aba da biblioteca Playwright a qual foi a selecionada para realizarmos os testes E2E
 - Com a aba aberta clique no botão 'Run all' ou pressione F5 que os testes executarão
 - Selecione algum case de teste: Carrinho, Detalhes dos produtos e Home
 - No lado superior direito você verá algumas imagens que correspondem ao automatizador executando o passo a passo dos testes.
+  
