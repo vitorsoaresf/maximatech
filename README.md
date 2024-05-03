@@ -69,9 +69,10 @@ Na tela do carrinho ao qual representa todos os produtos que o usuário possui i
 
 # <strong>Como executar o projeto?</strong>
 
-- Após baixar o projeto abra a CLI no diretório do mesmo.
-- Execute o comando <code>npm -i</code>
-- Finalizado as instalações rode o comando <code>npm run dev</code>, uma aba será aberta no browser com o aplicativo
+- Após baixar o projeto  instale o Git (https://git-scm.com/)
+- Depois de instalado, com o botão direito do mouse procure a opção 'Git Bash Here' e clique.
+- Será aberta uma CLI, e execute o comando <code>npm -i</code>
+- Finalizado as instalações rode o comando <code>npm run dev</code>, uma aba será aberta no browser com o aplicativo.
 
 <br>
 <br>
@@ -82,5 +83,5 @@ Na tela do carrinho ao qual representa todos os produtos que o usuário possui i
 - Logo após rode o comando <code>npm run test</code>
 - Será aberto uma aba da biblioteca Playwright a qual foi a selecionada para realizarmos os testes E2E
 - Com a aba aberta clique no botão 'Run all' ou pressione F5 que os testes executarão
-- Selecione item de teste de algum case de teste: Carrinho, Detalhes dos produtos e Home
-- No lado superior direito você verá algumas imagens que correspondem ao automatizador executando o passo a passo de testes.
+- Selecione algum case de teste: Carrinho, Detalhes dos produtos e Home
+- No lado superior direito você verá algumas imagens que correspondem ao automatizador executando o passo a passo dos testes.
