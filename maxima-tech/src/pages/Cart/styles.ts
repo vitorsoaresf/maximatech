@@ -19,9 +19,7 @@ export const ContainerProductsStyled: StyleComponents = {
   flexDirection: "column",
 };
 
-export const BreadcrunberStyled: StyleComponents = {
-  padding: "10px",
-};
+export const BreadcrunberStyled: StyleComponents = {};
 
 export const ContainerAmountStyled: StyleComponents = {
   flexDirection: "column",

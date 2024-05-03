@@ -48,7 +48,7 @@ export const RemoveProductStyled: StyleComponents = {
   padding: "10px",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "end",
 };
 
 export const DescriptionProductStyled: StyleComponents = {
