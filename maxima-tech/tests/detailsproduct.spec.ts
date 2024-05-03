@@ -87,4 +87,49 @@ test.describe("Detalhes dos produtos", () => {
       await page.locator('[data-test="quantity-selector"]').inputValue()
     ).toBe("6");
   });
+
+  test("Deve ser capaz de verificar que ao alterar a quantidade de produtos o subtotal será o valor do produto vezes a quantidade selecionada", async ({
+    page,
+  }) => {
+    const optionSelected = 6;
+    await page.locator('[data-test="add-cart"]').click();
+
+    await page.locator('[data-test="icon-cart-redirect"]').click();
+
+    const options = await page.locator('[data-test="quantity-selector"]');
+
+    await options.selectOption({ value: `${optionSelected}` });
+
+    const price = await page
+      .locator('[data-test="subtotal-products"]')
+      .textContent();
+
+    expect(price?.replace("R$ ", "").replace(",00", "")).toBe("720");
+  });
+
+  test("Deve ser capaz de verificar que ao existir produto adicionado ao carrinho, haverá a taxa de entrega", async ({
+    page,
+  }) => {
+    await page.locator('[data-test="add-cart"]').click();
+
+    await page.locator('[data-test="icon-cart-redirect"]').click();
+
+    const price = await page
+      .locator('[data-test="delivery-price"]')
+      .textContent();
+
+    expect(price).toBe("R$ 40,00");
+  });
+
+  test("Deve ser capaz de verificar que será somado o subtotal e a entrega do produto somando um valor total", async ({
+    page,
+  }) => {
+    await page.locator('[data-test="add-cart"]').click();
+
+    await page.locator('[data-test="icon-cart-redirect"]').click();
+
+    const price = await page.locator('[data-test="total-price"]').textContent();
+
+    expect(price).toBe("R$ 120,00");
+  });
 });

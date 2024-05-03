@@ -94,7 +94,7 @@ export const Cart = () => {
         <ButtonComponent
           onClick={finalizePurchase}
           data-test="bt-finalize-buy"
-          isDisabled={cartState.list.length === 0}
+          isDisabled={!hasProducts}
           _hover={{
             backgroundColor: theme.palette.white,
             color: theme.palette.blue["550"],
@@ -107,7 +107,7 @@ export const Cart = () => {
         <ButtonComponent
           onClick={clearCart}
           data-test="bt-clear-cart"
-          isDisabled={cartState.list.length === 0}
+          isDisabled={!hasProducts}
           _hover={{
             backgroundColor: theme.palette.white,
             color: theme.palette.red["550"],

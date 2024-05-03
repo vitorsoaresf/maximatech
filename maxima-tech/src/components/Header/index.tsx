@@ -61,7 +61,7 @@ export const Header = () => {
           >
             <ImageComponent src={BagImg} loading="lazy" />
           </Link>
-          {cartState.list.length > 0 && (
+          {cartState.list?.length > 0 && (
             <TextComponent
               transform="translate3d(-22px, 10px, 10px)"
               {...QuantityProductsCartStyled}

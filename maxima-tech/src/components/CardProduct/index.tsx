@@ -31,6 +31,7 @@ export const CardProduct = ({ product }: ICardProduct) => {
     <CardComponent
       as="li"
       maxW="sm"
+      data-test={`product-${product.id}`}
       {...CardStyled}
       onClick={() => redirectPage(`detailsproduct/${product.id}`)}
     >

@@ -108,7 +108,7 @@ export const Home = () => {
               ))
           ) : (
             <FlexComponent {...ContainerNotFoundProducts}>
-              <HeadingComponent>
+              <HeadingComponent data-test="not-found-products">
                 Não foi possível encontrar nenhum produto.
               </HeadingComponent>
               <ImageComponent
