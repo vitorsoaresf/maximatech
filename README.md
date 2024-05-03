@@ -3,7 +3,7 @@
 <br>
 
 Caso deseje visitar nossa aplicação, segue o link do deploy:
-https://maxima-tech-a1ab3prtl-vitorsoaresfs-projects.vercel.app/
+https://maxima-tech-n29wrz3wo-vitorsoaresfs-projects.vercel.app/
 
 <br>
 
