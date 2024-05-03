@@ -3,4 +3,5 @@ export enum EProducts {
   SET_PRODUCTS_FILTERED,
   SET_CATEGORY,
   SET_ORDER,
+  SET_TERM,
 }

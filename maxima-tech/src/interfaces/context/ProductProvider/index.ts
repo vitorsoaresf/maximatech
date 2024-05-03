@@ -7,6 +7,7 @@ export interface IProductState {
   listFiltered: Array<IProduct>;
   category: string;
   order: string;
+  term: string;
 }
 
 export interface IIProductAction {

@@ -6,6 +6,7 @@ import { ELEMENT_PER_PAGE } from "@constants/Products";
 import {
   setCategory,
   setOrder,
+  setTerm,
   setProductListFiltered,
 } from "@contexts/ProductsProvider/actions";
 import { useProductContext } from "@contexts/ProductsProvider/context";
@@ -43,6 +44,7 @@ export const useProduct = () => {
     );
     setCategory(productDispatch, category);
     setOrder(productDispatch, "");
+    setTerm(productDispatch, "");
   };
 
   const filterProductsByOrder = (order: string) => {
@@ -72,6 +74,7 @@ export const useProduct = () => {
         item.name.toLowerCase().includes(term.toLowerCase())
       )
     );
+    setTerm(productDispatch, term);
   };
 
   const quantityProducts = Number(

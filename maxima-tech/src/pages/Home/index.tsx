@@ -51,7 +51,6 @@ export const Home = () => {
 
     if (productState.category || productState.order) {
       filterProductsByCategory(productState.category);
-      // filterProductsByOrder(productState.order);
     } else {
       setProductListFiltered(productDispatch, productList.data);
     }
@@ -90,7 +89,6 @@ export const Home = () => {
             placeholder="(Todos)"
             onChange={(e: any) => filterProductsByOrder(e.target.value)}
             value={productState.order}
-            // defaultValue={productState.order}
             {...SelectElementsStyled}
           >
             {ORDER_LIST.map((item: any) => (

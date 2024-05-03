@@ -30,3 +30,10 @@ export const setOrder = (
 ) => {
   dispatch({ type: EProducts.SET_ORDER, payload: payload });
 };
+
+export const setTerm = (
+  dispatch: Dispatch<IIProductAction>,
+  payload: string
+) => {
+  dispatch({ type: EProducts.SET_TERM, payload: payload });
+};

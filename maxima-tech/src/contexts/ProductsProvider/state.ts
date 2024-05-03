@@ -3,4 +3,5 @@ export const INITIAL_STATE = {
   listFiltered: [],
   category: "",
   order: "",
+  term: "",
 };

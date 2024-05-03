@@ -23,11 +23,13 @@ import { Icon } from "@assets/icons";
 import { useCart } from "@hooks/useCart";
 import { useProduct } from "@hooks/useProducts";
 import { useEffect } from "@libs/react";
+import { useProductContext } from "@contexts/ProductsProvider/context";
 
 export const Header = () => {
   const navigate = useNavigate();
   const { cartState, loadProductsCart } = useCart();
   const { filteByrTerm } = useProduct();
+  const { productState } = useProductContext();
 
   useEffect(() => {
     loadProductsCart();
@@ -50,6 +52,7 @@ export const Header = () => {
         <Input
           placeholder="Quero comprar algo específico..."
           onChange={(e) => filteByrTerm(e.target.value)}
+          value={productState.term}
           actionBtRightPosition={Icon["search"]}
           width={["310px", "310px", "310px", "350px"]}
           data-test="input-search-product"

@@ -26,6 +26,11 @@ export const reducer = (state: IProductState, action: IIProductAction) => {
         ...state,
         order: action.payload,
       };
+    case EProducts.SET_TERM:
+      return {
+        ...state,
+        term: action.payload,
+      };
     default:
       return { ...state };
   }
