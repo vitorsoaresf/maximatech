@@ -120,9 +120,9 @@ export const useCart = () => {
   const loadProductsCart = () => {
     let products = null;
     try {
-      products = JSON.parse(
-        localStorage.getItem("@MaximaTech:products") as any
-      );
+      products =
+        JSON.parse(localStorage.getItem("@MaximaTech:products") as any) ??
+        ([] as any);
     } catch {
       products = [];
     }
@@ -134,8 +134,6 @@ export const useCart = () => {
   const amountPriceBuySubtotal = calcAmountListProductsFromCart();
   const amountTotal =
     amountPriceBuySubtotal + (hasProducts ? DELIVERY_CUST : 0);
-
-  // console.log(">", cartState.list);
 
   return {
     cartState,
