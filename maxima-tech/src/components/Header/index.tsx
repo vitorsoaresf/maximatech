@@ -22,11 +22,16 @@ import { Input } from "@components";
 import { Icon } from "@assets/icons";
 import { useCart } from "@hooks/useCart";
 import { useProduct } from "@hooks/useProducts";
+import { useEffect } from "@libs/react";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { cartState } = useCart();
+  const { cartState, loadProductsCart } = useCart();
   const { filteByrTerm } = useProduct();
+
+  useEffect(() => {
+    loadProductsCart();
+  }, []);
 
   return (
     <FlexComponent as="nav" {...ContainerHeaderStyled}>
@@ -51,19 +56,19 @@ export const Header = () => {
         />
 
         <ListItemComponent {...ContainerItemListStyled}>
-          <Link to="/gallery" style={{ width: "max-content" }}>
+          <Link to="/" style={{ width: "max-content" }}>
             <ImageComponent src={UserImg} loading="lazy" />
           </Link>
           <Link
             to="/cart"
             data-test="icon-cart-redirect"
-            style={{ width: "max-content" }}
+            style={{ width: "max-content", padding: "8px" }}
           >
             <ImageComponent src={BagImg} loading="lazy" />
           </Link>
           {cartState.list?.length > 0 && (
             <TextComponent
-              transform="translate3d(-22px, 10px, 10px)"
+              transform="translate3d(-30px, 12px, 12px)"
               {...QuantityProductsCartStyled}
             >
               {cartState.list.length}

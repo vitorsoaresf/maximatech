@@ -52,6 +52,16 @@ export const Cart = () => {
           </BreadcrumbItem>
         </BreadcrumbComponent>
 
+        {hasProducts && (
+          <>
+            <HeadingComponent>Carrinho</HeadingComponent>
+            <TextComponent>
+              Total ({cartState.list?.length} produtos){" "}
+              <strong>R$ {amountPriceBuySubtotal},00</strong>
+            </TextComponent>
+          </>
+        )}
+
         {hasProducts ? (
           cartState.list.map((item) => (
             <CardCart key={crypto.randomUUID()} product={item} />

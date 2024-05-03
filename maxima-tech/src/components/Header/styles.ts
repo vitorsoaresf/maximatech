@@ -50,6 +50,7 @@ export const ContainerItemListStyled: StyleComponents = {
   ...styledHover,
   fontWeight: "bold",
   display: "flex",
+  alignItems: "center",
   gap: "16px",
 };
 

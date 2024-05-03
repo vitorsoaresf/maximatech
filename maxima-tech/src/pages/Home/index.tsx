@@ -33,10 +33,8 @@ import {
 } from "@contexts/ProductsProvider/actions";
 import { useEffect, useState } from "@libs/react";
 import ImgViewProducts from "@assets/img/eyes.svg";
-import { useCart } from "@hooks/useCart";
 
 export const Home = () => {
-  const [categorySelected, setCategorySelected] = useState("");
   const [pageSelected, setPageSelected] = useState(0);
   const { productState, productDispatch } = useProductContext();
   const {
@@ -47,12 +45,15 @@ export const Home = () => {
     filterProductsByCategory,
     filterProductsByOrder,
   } = useProduct();
-  const { loadProductsCart } = useCart();
 
   useEffect(() => {
-    loadProductsCart();
     setProductList(productDispatch, productList.data);
-    setProductListFiltered(productDispatch, productList.data);
+
+    if (productState.category) {
+      filterProductsByCategory(productState.category);
+    } else {
+      setProductListFiltered(productDispatch, productList.data);
+    }
   }, [productList.data]);
 
   return (
@@ -73,10 +74,9 @@ export const Home = () => {
               key={crypto.randomUUID()}
               label={category || "Todas as categorias"}
               onClick={() => {
-                setCategorySelected(category);
                 filterProductsByCategory(category);
               }}
-              active={category === categorySelected}
+              active={category === productState.category}
             />
           ))}
         </FlexComponent>

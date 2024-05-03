@@ -135,6 +135,8 @@ export const useCart = () => {
   const amountTotal =
     amountPriceBuySubtotal + (hasProducts ? DELIVERY_CUST : 0);
 
+  // console.log(">", cartState.list);
+
   return {
     cartState,
     addProductCart,

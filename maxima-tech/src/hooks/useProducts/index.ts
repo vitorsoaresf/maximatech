@@ -4,6 +4,7 @@ import { useState } from "@libs/react";
 import { IProduct } from "@interfaces/components";
 import { ELEMENT_PER_PAGE } from "@constants/Products";
 import {
+  setCategory,
   setOrder,
   setProductListFiltered,
 } from "@contexts/ProductsProvider/actions";
@@ -40,6 +41,7 @@ export const useProduct = () => {
         item.category.includes(category)
       )
     );
+    setCategory(productDispatch, category);
     setOrder(productDispatch, "");
   };
 
