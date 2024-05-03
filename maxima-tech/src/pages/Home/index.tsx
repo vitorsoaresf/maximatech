@@ -51,7 +51,7 @@ export const Home = () => {
 
     if (productState.category || productState.order) {
       filterProductsByCategory(productState.category);
-      filterProductsByOrder(productState.order);
+      // filterProductsByOrder(productState.order);
     } else {
       setProductListFiltered(productDispatch, productList.data);
     }

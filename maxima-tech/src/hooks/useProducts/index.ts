@@ -42,6 +42,7 @@ export const useProduct = () => {
       )
     );
     setCategory(productDispatch, category);
+    setOrder(productDispatch, "");
   };
 
   const filterProductsByOrder = (order: string) => {
