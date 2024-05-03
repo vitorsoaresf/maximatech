@@ -74,11 +74,7 @@ export const CardCart = ({ product }: ICardCart) => {
               {Array(10)
                 .fill(0)
                 .map((_, index) => (
-                  <option
-                    key={crypto.randomUUID()}
-                    // data-test={`quantity-products`}
-                    value={index + 1}
-                  >
+                  <option key={crypto.randomUUID()} value={index + 1}>
                     {index + 1}
                   </option>
                 ))}

@@ -2,6 +2,8 @@ import { test, expect, chromium } from "@playwright/test";
 
 test.describe("Detalhes dos produtos", () => {
   test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:5173/detailsproduct/1");
+
     const browser = await chromium.launch();
     const context = await browser.newContext();
 
@@ -25,8 +27,6 @@ test.describe("Detalhes dos produtos", () => {
         body: JSON.stringify(responseBody),
       });
     });
-
-    await page.goto("http://localhost:5173/detailsproduct/1");
   });
 
   test("Deve ser capaz de verificar que ao clicar no item HOME do breadcrumber o usuário é redirecionado para a página HOME", async ({
@@ -59,7 +59,7 @@ test.describe("Detalhes dos produtos", () => {
     expect(message).toHaveText("Produto adicionado ao carrinho com sucesso!");
   });
 
-  test("Deve ser capaz de verificar que ao clicar em 'adicionar ao carrinho' o produto visualizado em tela e depois ir para a página do carrinho, visualizar um produto adicionado", async ({
+  test("Deve ser capaz de verificar que ao clicar em 'adicionar ao carrinho' o produto visualizado em tela e depois ir para a página do carrinho, é possível visualizar um produto adicionado", async ({
     page,
   }) => {
     await page.locator('[data-test="add-cart"]').click();

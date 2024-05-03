@@ -5,18 +5,6 @@ test.describe("Carrinho", () => {
     await page.goto("http://localhost:5173/cart");
   });
 
-  // test("Deve ser capaz de verificar se o título do documento HTML é MaximaTech", async ({
-  //   page,
-  // }) => {
-  //   await expect(page).toHaveTitle(/MaximaTech/);
-  // });
-
-  // test("Deve ser capaz de verificar se a logo do documento é 'ecommerce' e está visível", async ({
-  //   page,
-  // }) => {
-  //   expect(page.locator('[data-test="ecommerce"]')).toBeVisible();
-  // });
-
   test("Deve ser capaz de verificar que o botão FINALIZAR COMPRA está desabilitado caso o carrinho não possua nenhum item", async ({
     page,
   }) => {
@@ -43,7 +31,7 @@ test.describe("Carrinho", () => {
     expect(deliveryPrice).toHaveText("R$ 0,00");
   });
 
-  test("Deve ser capaz de verificar que o label ENTREGA é igual a zero", async ({
+  test("Deve ser capaz de verificar que o label TOTAL é igual a zero", async ({
     page,
   }) => {
     const total = await page.locator('[data-test="total-price"]');
