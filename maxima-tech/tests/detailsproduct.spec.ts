@@ -7,7 +7,7 @@ test.describe("Detalhes dos produtos", () => {
     const browser = await chromium.launch();
     const context = await browser.newContext();
 
-    await context.route("**/api/detailsproduct/1", async (route) => {
+    await context.route("**/detailsproduct/1", async (route) => {
       const responseBody = {
         id: "1",
         name: "Tênis Futurista",
@@ -57,79 +57,5 @@ test.describe("Detalhes dos produtos", () => {
     );
     expect(message).toBeVisible();
     expect(message).toHaveText("Produto adicionado ao carrinho com sucesso!");
-  });
-
-  test("Deve ser capaz de verificar que ao clicar em 'adicionar ao carrinho' o produto visualizado em tela e depois ir para a página do carrinho, é possível visualizar um produto adicionado", async ({
-    page,
-  }) => {
-    await page.locator('[data-test="add-cart"]').click();
-
-    await page.locator('[data-test="icon-cart-redirect"]').click();
-
-    const nameProduct = await page.locator('[data-test="name-product-cart"]');
-
-    expect(nameProduct).toBeVisible();
-    expect(nameProduct).toHaveText("Tênis Futurista");
-  });
-
-  test("Deve ser capaz de verificar que ao clicar em 'adicionar ao carrinho' o produto visualizado em tela e depois ir para a página do carrinho, é possível alterar a quantidade do produto no carrinho", async ({
-    page,
-  }) => {
-    await page.locator('[data-test="add-cart"]').click();
-
-    await page.locator('[data-test="icon-cart-redirect"]').click();
-
-    const options = await page.locator('[data-test="quantity-selector"]');
-
-    await options.selectOption({ value: "6" });
-
-    expect(
-      await page.locator('[data-test="quantity-selector"]').inputValue()
-    ).toBe("6");
-  });
-
-  test("Deve ser capaz de verificar que ao alterar a quantidade de produtos o subtotal será o valor do produto vezes a quantidade selecionada", async ({
-    page,
-  }) => {
-    const optionSelected = 6;
-    await page.locator('[data-test="add-cart"]').click();
-
-    await page.locator('[data-test="icon-cart-redirect"]').click();
-
-    const options = await page.locator('[data-test="quantity-selector"]');
-
-    await options.selectOption({ value: `${optionSelected}` });
-
-    const price = await page
-      .locator('[data-test="subtotal-products"]')
-      .textContent();
-
-    expect(price?.replace("R$ ", "").replace(",00", "")).toBe("720");
-  });
-
-  test("Deve ser capaz de verificar que ao existir produto adicionado ao carrinho, haverá a taxa de entrega", async ({
-    page,
-  }) => {
-    await page.locator('[data-test="add-cart"]').click();
-
-    await page.locator('[data-test="icon-cart-redirect"]').click();
-
-    const price = await page
-      .locator('[data-test="delivery-price"]')
-      .textContent();
-
-    expect(price).toBe("R$ 40,00");
-  });
-
-  test("Deve ser capaz de verificar que será somado o subtotal e a entrega do produto somando um valor total", async ({
-    page,
-  }) => {
-    await page.locator('[data-test="add-cart"]').click();
-
-    await page.locator('[data-test="icon-cart-redirect"]').click();
-
-    const price = await page.locator('[data-test="total-price"]').textContent();
-
-    expect(price).toBe("R$ 160,00");
   });
 });

@@ -50,7 +50,7 @@ Na tela do carrinho ao qual representa todos os produtos que o usuário possui i
 
 ### <strong>Você inclui testes end-to-end para garantir a funcionalidade correta?</strong>
 
-<p>Nossa aplicação atende testes E2E para garantir que quando a aplicação obtiver novas atualizações, os testes garantam que o que já foi desenvolvido não quebre.</p>
+<p>Nossa aplicação atende testes E2E para garantir que quando a aplicação obtiver novas atualizações, os testes garantam que o que já foi desenvolvido não quebre. Foram desenvolvidos alguns testes de interação no intuito de projetar mais testes para o futuro.</p>
 
 <br>
 

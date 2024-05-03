@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Carrinho", () => {
+test.describe("Carrinho sem itens", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("http://localhost:5173/cart");
   });
